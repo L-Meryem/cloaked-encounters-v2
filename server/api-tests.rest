@@ -1,0 +1,81 @@
+## Test file generated using Claude AI
+
+### Variables
+@baseUrl = http://localhost:8080
+@tableId = 691be5cbea6d38fc2bf8557e
+@rowId = 691be5cbea6d38fc2bf8557f
+
+### Signup
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+  "userName": "testuser",
+  "email": "test@test.com",
+  "password": "password123",
+  "confirmPassword": "password123"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password123"
+}
+
+### Logout
+POST {{baseUrl}}/auth/logout
+
+### Get all tables
+GET {{baseUrl}}/tables
+
+### Get one table
+GET {{baseUrl}}/tables/{{tableId}}
+
+### Create table
+POST {{baseUrl}}/tables
+Content-Type: application/json
+
+{
+  "name": "Town Encounters",
+  "die": "1d6",
+  "entries": [
+    { "roll": 1, "entry": "Thief" },
+    { "roll": 2, "entry": "Merchant" }
+  ]
+}
+
+### Update table
+PUT {{baseUrl}}/tables/{{tableId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Table Name",
+  "die": "1d20"
+}
+
+### Delete table
+DELETE {{baseUrl}}/tables/{{tableId}}
+
+### Add row
+POST {{baseUrl}}/tables/{{tableId}}/rows
+Content-Type: application/json
+
+{
+  "roll": 3,
+  "entry": "Mysterious fog"
+}
+
+### Update row
+PUT {{baseUrl}}/tables/{{tableId}}/rows/{{rowId}}
+Content-Type: application/json
+
+{
+  "roll": 5,
+  "entry": "Updated event text"
+}
+
+### Delete row
+DELETE {{baseUrl}}/tables/{{tableId}}/rows/{{rowId}}
