@@ -1,5 +1,6 @@
 ## Test file generated using Claude AI
 
+## Test file for Tables
 ### Variables
 @baseUrl = http://localhost:8080
 @tableId = 691be5cbea6d38fc2bf8557e
@@ -39,11 +40,13 @@ POST {{baseUrl}}/tables
 Content-Type: application/json
 
 {
-  "name": "Town Encounters",
-  "die": "1d6",
+  "name": "Forest Encounters",
+  "die": "1d4",
   "entries": [
-    { "roll": 1, "entry": "Thief" },
-    { "roll": 2, "entry": "Merchant" }
+    { "roll": "1", "entry": "4 Goblin" },
+    { "roll": "2", "entry": "Orc" },
+    { "roll": "3", "entry": "Vendor" },
+    { "roll": "4", "entry": "A lost visitor" }
   ]
 }
 

@@ -1,0 +1,36 @@
+## Test file generated using Claude AI
+
+## Test file for Seeds
+### Variables
+@baseUrl = http://localhost:8080
+@seedId = SEED_ID_HERE
+
+### Login first (required for session)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password123"
+}
+
+### Get all seeds
+GET {{baseUrl}}/seeds
+
+### Get a specific seed
+GET {{baseUrl}}/seeds/{{seedId}}
+
+### Add a new seed
+POST {{baseUrl}}/seeds
+Content-Type: application/json
+
+{
+  "name": "Campaign Starter Seed",
+  "tables": ["TABLE_ID_1", "TABLE_ID_2", "TABLE_ID_3"]
+}
+
+### Delete a seed
+DELETE {{baseUrl}}/seeds/{{seedId}}
+
+### Logout
+POST {{baseUrl}}/auth/logout    

@@ -2,7 +2,7 @@ const Table = require("../models/Table");
 
 const getTables = async (req, res) => {
     try {
-        const tables = await Table.find({author: req.user.id });
+        const tables = await Table.find({ author: req.user.id });
         res.status(200).json({ success: true, data: tables });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
@@ -11,7 +11,15 @@ const getTables = async (req, res) => {
 
 const getTable = async (req, res) => {
     try {
-        const table = await Table.findById(req.params.id);
+        const table = await Table.findOne({
+            _id: req.params.id,
+            author: req.user.id
+        });
+
+        if (!table) {
+            return res.status(404).json({ success: false, error: "Table not found." });
+        }
+
         res.status(200).json({ success: true, data: table });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
@@ -36,13 +44,21 @@ const addTable = async (req, res) => {
 const updateTable = async (req, res) => {
     try {
         const table = await Table.findOneAndUpdate(
-            { _id: req.params.id },
             {
-                name: req.params.name,
+                _id: req.params.id,
+                author: req.user.id
+            },
+            {
+                name: req.body.name,
                 die: req.body.die
             },
             { new: true } //return updated table
         );
+
+        if (!table) {
+            return res.status(404).json({ success: false, error: "Table not found." });
+        }
+
         res.status(200).json({ success: true, data: table });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
@@ -51,7 +67,15 @@ const updateTable = async (req, res) => {
 
 const deleteTable = async (req, res) => {
     try {
-        const table = await Table.findByIdAndDelete(req.params.id);
+        const table = await Table.findOneAndDelete({
+            _id: req.params.id,
+            author: req.user.id
+        });
+
+         if (!table) {
+            return res.status(404).json({ success: false, error: "Table not found." });
+        }
+        
         res.status(200).json({ success: true, data: table });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

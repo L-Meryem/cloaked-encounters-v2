@@ -32,10 +32,14 @@ require("./config/passport")(passport);
 
 //Routes///////////
 const tableRoutes = require("./routes/tables");
+const chainRoutes = require("./routes/chains");
+const seedRoutes = require("./routes/seeds");
 const authRoutes = require("./routes/auth");
 
 app.use("/auth", authRoutes);
 app.use("/tables", tableRoutes);
+app.use("/chains", chainRoutes);
+app.use("/seeds", seedRoutes);
 
 //Server//////////
 app.listen(PORT, () => {

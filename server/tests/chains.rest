@@ -1,0 +1,45 @@
+## Test file generated using Claude AI
+
+## Test file for Chains
+### Variables
+@baseUrl = http://localhost:8080
+@chainId = CHAIN_ID_HERE
+
+### Login first (required for session)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password123"
+}
+
+### Get all chains
+GET {{baseUrl}}/chains
+
+### Get a specific chain
+GET {{baseUrl}}/chains/{{chainId}}
+
+### Add a new chain
+POST {{baseUrl}}/chains
+Content-Type: application/json
+
+{
+  "name": "Town Adventure Chain",
+  "tables": ["TABLE_ID_1", "TABLE_ID_2", "TABLE_ID_3"]
+}
+
+### Update a chain
+PUT {{baseUrl}}/chains/{{chainId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Town Adventure Chain",
+  "tables": ["TABLE_ID_1", "TABLE_ID_2"]
+}
+
+### Delete a chain
+DELETE {{baseUrl}}/chains/{{chainId}}
+
+### Logout
+POST {{baseUrl}}/auth/logout

@@ -7,14 +7,18 @@ const TableSchema = new Schema({
     entries: [
         {
             id: mongoose.ObjectId,
-            roll: Number,
-            entry: String // could be 4 or between 4 and 6
+            roll: String, // could be 4 or between 4 and 6
+            entry: String 
         }
     ],
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    shared: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports= mongoose.model("Table", TableSchema);
