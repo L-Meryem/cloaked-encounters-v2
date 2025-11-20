@@ -1,10 +1,12 @@
-const tableToNode = (tables, x = 0, y = 200) => {
+const tableToNode = (table, x = 0, y = 200) => {
     //Create a node for react flow
-    const nodes = tables.map((table, index) => ({
+    const arrayOfTables = Array.isArray(table)? table : [table];
+    
+    const nodes = arrayOfTables.map( table => ({
         id: table._id,
         type: 'tableNode', //Key for Flow to pick the component
         data: table,
-        position: { x: x, y: index * y }
+        position: { x: x, y: y }
     }));
 
     return nodes;

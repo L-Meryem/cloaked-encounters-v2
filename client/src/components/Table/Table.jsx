@@ -14,12 +14,22 @@ const Table = ({ sendTables, render = true }) => {
         }
         fetchTables();
     }, [sendTables]);
+
+    const handleDragStart = (e, table) => {
+        e.dataTransfer.setData('application/json', JSON.stringify(table));
+        e.dataTransfer.effectAllowed = 'move';
+        console.log(e.dataTransfer.getData('application/json'));
+    };
+
     if (render)
         return (
             <ul>
                 {
                     tables.map(table => (
-                        <li key={table._id}>{table.name}</li>
+                        <li key={table._id} draggable="true"
+                            onDragStart={e => handleDragStart(e, table)}
+                        >{table.name}</li>
+                        //on dragStart store data in dataTransfer
                     ))
                 }
             </ul>
