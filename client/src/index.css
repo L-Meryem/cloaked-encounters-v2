@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+   themes: light --default;
+ }
+
+
+ .viewer{
+  background-color: rgb(31, 32, 32);
+  color: rgb(11, 191, 11)
+ }

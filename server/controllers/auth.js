@@ -23,14 +23,14 @@ const postLogin = async (req, res, next) => {
         }
 
         if (!user) {
-            return res.status(401).json({ success: false, message: info.message });
+            return res.status(401).json({ success: false, message: info.message});
         }
 
         req.logIn(user, (err) => {
             if (err) {
-                return next(err);
+                return res.status(500).json({ success: false, message: "Login failed." });
             }
-            res.json({
+            return res.json({
                 success: true,
                 user: {
                     id: user.id,

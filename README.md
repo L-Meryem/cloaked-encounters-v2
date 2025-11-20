@@ -2,7 +2,7 @@
 
 ![status](https://img.shields.io/badge/status-early%20development-%23eb426c?style=for-the-badge)
 
-## About the project
+## About
 
 Tabletop RPGs like Dungeons & Dragons are about sharing a collective story.  Part of making that story come alive is having locations, events and characters that feel both fun and authentic to the game.  Most gamemasters will use random tables as prompts to build their adventures.  Such a table might contain a list of twenty items you might find in a goblin’s pocket, fifty horrific diseases, or one hundred personality quirks.
 
@@ -10,7 +10,7 @@ Not every table will work for every game.  Just as a random character from Game 
 
 Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. Cloaked Encounters is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
 
-In the future, I hope to add features that will allow a community of users to share their favorites with each other.
+In the future, I hope to add features that will allow my community to share their favorites with each other.
 
 <p align="center">
   <a href="#" target="_blank">
@@ -35,7 +35,8 @@ In the future, I hope to add features that will allow a community of users to sh
   - [ ] Edit die type
 - [ ] Chaines
   - [ ] Chain tables in a specific order and generate an encounter
-  - [ ] Approve/Reroll parts of a chain 
+  - [ ] Approve/Reroll parts of a chain
+  - [ ] Save your favorite results as seeds for your adventures
 - [ ] Community
     - [ ] View other contributers' tables
     - [ ] Share your own tables
@@ -47,17 +48,19 @@ In the future, I hope to add features that will allow a community of users to sh
 ## Tech stack
 
 <p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" height="28"/>
-  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" height="28"/>
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" height="28"/>
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="28"/>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" height="28"/>
-  <!-- <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" height="28"/> -->
-  <img src="https://img.shields.io/badge/Passport-34E27A?style=for-the-badge&logo=passport&logoColor=black" height="28"/>
-  <img src="https://img.shields.io/badge/Bcrypt-333333?style=for-the-badge&logo=lock&logoColor=white" height="28"/>
-  <img src="https://img.shields.io/badge/MVC-pattern-blue?style=for-the-badge" height="28"/>
-  <img src="https://img.shields.io/badge/REST-API-0A9396?style=for-the-badge" height="28"/>
-  <img src="https://img.shields.io/badge/PaperCSS-FF69B4?style=for-the-badge&logo=css3&logoColor=white" height="28"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-FFFFFF?style=for-the-badge&logo=express&logoColor=black&labelColor=FFFFFF" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" />
+  <img src="https://img.shields.io/badge/Passport-34E27A?style=for-the-badge&logo=passport&logoColor=black" />
+  <img src="https://img.shields.io/badge/Bcrypt-333333?style=for-the-badge&logo=lock&logoColor=white" />
+  <img src="https://img.shields.io/badge/MVC-pattern-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/REST-API-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PaperCSS-FFFFFF?style=for-the-badge&logo=css3&logoColor=black&labelColor=FFFFFF" />
+  <img src="https://img.shields.io/badge/React_Flow-EA3374?style=for-the-badge&logo=react&logoColor=white" />
+
 </p>
 
 <p align="right">
