@@ -18,7 +18,6 @@ const Table = ({ sendTables, render = true }) => {
     const handleDragStart = (e, table) => {
         e.dataTransfer.setData('application/json', JSON.stringify(table));
         e.dataTransfer.effectAllowed = 'move';
-        console.log(e.dataTransfer.getData('application/json'));
     };
 
     if (render)

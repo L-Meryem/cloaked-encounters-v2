@@ -1,11 +1,36 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-   themes: light --default;
- }
+  themes: light --default;
+}
 
 
- .viewer{
+.viewer {
   background-color: rgb(31, 32, 32);
   color: rgb(11, 191, 11)
- }
+}
+
+table {
+  box-shadow: 5px 5px gray;
+  border-collapse: collapse;
+}
+
+table thead {
+  padding: 10px;
+  background-color: tomato;
+  border: 2px solid black;
+  color: white;
+}
+
+table th,
+table td {
+  border: 2px solid black;
+}
+
+table td:first-child {
+  text-align: center;
+}
+
+tbody {
+  background-color: white;
+}
