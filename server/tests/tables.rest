@@ -39,14 +39,40 @@ GET {{baseUrl}}/tables/{{tableId}}
 POST {{baseUrl}}/tables
 Content-Type: application/json
 
+# {
+#   "name": "Forest Encounters",
+#   "die": "1d4",
+#   "entries": [
+#     { "roll": "1", "entry": "4 Goblin" },
+#     { "roll": "2", "entry": "Orc" },
+#     { "roll": "3", "entry": "Vendor" },
+#     { "roll": "4", "entry": "A lost visitor" }
+#   ]
+# }
 {
-  "name": "Forest Encounters",
-  "die": "1d4",
+  "name": "Professions",
+  "die": "1d20",
   "entries": [
-    { "roll": "1", "entry": "4 Goblin" },
-    { "roll": "2", "entry": "Orc" },
-    { "roll": "3", "entry": "Vendor" },
-    { "roll": "4", "entry": "A lost visitor" }
+    { "roll": "1", "entry": "Abbot" },
+    { "roll": "2", "entry": "Acolyte" },
+    { "roll": "3", "entry": "Acrobat" },
+    { "roll": "4", "entry": "Adviser" },
+    { "roll": "5", "entry": "Alchemist" },
+    { "roll": "6", "entry": "Apothecary" },
+    { "roll": "7", "entry": "Archer" },
+    { "roll": "8", "entry": "Archetype" },
+    { "roll": "9", "entry": "Artisan" },
+    { "roll": "10", "entry": "Artist" },
+    { "roll": "11", "entry": "Baker" },
+    { "roll": "12", "entry": "Beggar" },
+    { "roll": "13", "entry": "Blacksmith" },
+    { "roll": "14", "entry": "Bookbinder" },
+    { "roll": "15", "entry": "Brewer" },
+    { "roll": "16", "entry": "Burglar" },
+    { "roll": "17", "entry": "Circus performer" },
+    { "roll": "18", "entry": "Carpenter" },
+    { "roll": "19", "entry": "Composer" },
+    { "roll": "20", "entry": "Cook" }
   ]
 }
 

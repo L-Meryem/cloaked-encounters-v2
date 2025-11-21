@@ -45,6 +45,13 @@ In the future, I hope to add features that will allow my community to share thei
   - [ ] Writing my **contributions** guidelines
   - [ ] Establishing a **code of conduct**
 
+## Roadmap
+- [ ] Copy tables from blogs and posts
+- [ ] Your own tables/chains/seeds available offline
+- [ ] Collab mode, invite people to build a table together (reddit r/100) no login required
+- [ ] API to access all the shared tables
+- [ ] Drag row(s) from a table to another
+
 ## Tech stack
 
 <p align="center">

@@ -31,10 +31,20 @@ const Board = () => {
     (changes) => setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
     [],
   );
+
   const onConnect = useCallback(
-    (params) => setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot)),
+    (params) => {
+      setEdges((edgesSnapshot) => addEdge(
+        {
+          ...params,
+          label: String(edgesSnapshot.length + 1),
+        },
+        edgesSnapshot
+      ));
+    },
     [],
   );
+
 
   //Drop
   const handleDragOver = e => {
@@ -63,12 +73,12 @@ const Board = () => {
   }, [edges]);
 
   //convert tables to nodes
-  const convertTables = tables => {
-    if (!initialized) {
-      setNodes(tableToNode(tables));
-      setInitialized(true);
-    }
-  }
+  // const convertTables = tables => {
+  //   if (!initialized) {
+  //     setNodes(tableToNode(tables));
+  //     setInitialized(true);
+  //   }
+  // }
 
   const saveAsChain = async () => {
     await saveChain('First Chain', nodes, edges);
@@ -79,6 +89,14 @@ const Board = () => {
       stroke: 'blue',
       strokeWidth: 3,
     },
+    labelStyle: {
+      fontSize: '20px',
+      fill: 'white'
+    }, labelBgStyle: {
+      fill: 'blue',
+      opacity: 0.8
+    },
+    labelBgPadding: [4, 4],
     markerEnd: {
       type: 'arrowclosed',
       color: 'blue',

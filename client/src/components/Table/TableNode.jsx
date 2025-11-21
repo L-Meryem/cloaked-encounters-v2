@@ -62,7 +62,7 @@ const TableNode = ({ data }) => { //data from tableToNode fn
         delete newEditedRows[rowId];
         setEditedRows(newEditedRows);
 
-        
+
     }
 
     const handleStyle = {
