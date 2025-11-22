@@ -6,7 +6,7 @@ const Table = ({ sendTables, render = true }) => {
 
     useEffect(() => {
         const fetchTables = async () => {
-            const res = await fetch('api/tables');
+            const res = await fetch('/api/tables');
             const tables = await res.json();
             setTables(tables.data);
             if (sendTables)

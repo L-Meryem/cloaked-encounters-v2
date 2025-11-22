@@ -1,8 +1,9 @@
 import React from 'react';
 import { BiCollection, BiLinkAlt, BiBulb, BiShareAlt } from "react-icons/bi";
 import Table from '../Table/Table';
+import Chain from '../Aside/Chain/Chain';
 
-const Aside = () => {
+const Aside = ({loadChain}) => {
     return (
         < div className="tabs tabs-lift flex h-full w-full" >
             <label className="tab flex-1 bg-pink-400">
@@ -18,10 +19,7 @@ const Aside = () => {
                 <BiLinkAlt />
             </label>
             <div className="tab-content bg-yellow-100 border-base-300 p-6">
-                <ul>
-                    <li>chain 1</li>
-                    <li>chain 2</li>
-                </ul>
+                <Chain onLoadChain={loadChain}/>
             </div>
 
             <label className="tab flex-1 bg-green-300">

@@ -16,9 +16,9 @@ const nodeTypes = {
   tableNode: TableNode,
 };
 
-const Board = () => {
-  const [nodes, setNodes] = useState([]);
-  const [edges, setEdges] = useState([]);
+const Board = ({nodes, setNodes, edges, setEdges}) => {
+  // const [nodes, setNodes] = useState([]);
+  // const [edges, setEdges] = useState([]);
   const [initialized, setInitialized] = useState(false); //Fix for: node position overrides after every render
 
   const reactFlowInstance = useReactFlow();

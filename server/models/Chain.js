@@ -12,7 +12,11 @@ const ChainSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Table"
         }
-    ]
+    ],
+    flowData: {
+        nodes: [mongoose.Schema.Types.Mixed],
+        edges: [mongoose.Schema.Types.Mixed]
+    }
 });
 
 module.exports = mongoose.model("Chain", ChainSchema);

@@ -31,7 +31,8 @@ const addChain = async (req, res) => {
         const chain = await Chain.create({
             name: req.body.name,
             author: req.user.id,
-            tables: req.body.tables
+            tables: req.body.tables,
+            flowData: req.body.flowData
         });
         res.status(201).json({ success: true, data: chain });
     } catch (error) {
@@ -48,7 +49,8 @@ const updateChain = async (req, res) => {
             },
             {
                 name: req.body.name,
-                tables: req.body.tables
+                tables: req.body.tables,
+                flowData: req.body.flowData
             },
             { new: true }
         );
