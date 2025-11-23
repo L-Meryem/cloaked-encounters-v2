@@ -103,7 +103,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId }) => {
         panOnScroll={true}
         nodeTypes={nodeTypes}
         defaultEdgeOptions={edgeOptions}
-        defaultViewport={{ x: 0, y: 0, zoom: 0.5 }}
+        defaultViewport={{ x: 0, y: 0, zoom: 1 }}
       >
         <Background
           gap={20}

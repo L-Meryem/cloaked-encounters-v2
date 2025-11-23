@@ -14,7 +14,7 @@ const Chain = ({onLoadChain}) => {
   }, []);
 
   return (
-    <ul>
+    <ul className='tablesList child-borders chain'>
       {
         chains.map(chain => (
           <li key={chain._id} onClick={() => onLoadChain(chain._id)}>{chain.name}</li>

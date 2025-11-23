@@ -70,6 +70,12 @@ In the future, I hope to add features that will allow my community to share thei
 
 </p>
 
+## Acknowledgments
+
+- [The open source guides](https://opensource.guide/)
+- [React PaperCSS](https://hacker0limbo.github.io/react-papercss-design/en-US) For react friendly PaperCSS.
+- [Character doodles](https://gordyh.itch.io/public-domain-character-doodles) by Gordy Higgins.
+
 <p align="right">
   <a href="#top">
     <img src="https://img.shields.io/badge/⬆%20Back%20to%20Top-555555?style=for-the-badge" alt="back to top"/>

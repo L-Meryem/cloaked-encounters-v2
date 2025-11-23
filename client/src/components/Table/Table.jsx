@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-const Table = ({ sendTables, render = true, newTable, onCreateTable }) => { 
+const Table = ({ sendTables, render = true, onCreateTable }) => {
     const [tables, setTables] = useState([]);
 
     const [dieType, setDieType] = useState(20); // d20
@@ -28,13 +28,14 @@ const Table = ({ sendTables, render = true, newTable, onCreateTable }) => {
         onCreateTable(die); //Home page fn
     }
 
-      if (newTable) {
+
+    if (render)
         return (
             <>
-                <input type="number" name="dieCount" id="dieCount" min="1" max="10"
-                    placeholder='Die count' value={dieCount}
-                    onChange={e => setDieCount(e.target.value)} />
-                <ul>
+                <div className='createTable'>
+                    <input type="text" name="dieCount" id="dieCount"
+                        placeholder='#' value={dieCount}
+                        onChange={e => setDieCount(e.target.value)} />
                     <select name="dieType" id="dieType" value={dieType}
                         onChange={e => setDieType(e.target.value)}>
                         <option value="4">d4</option>
@@ -42,28 +43,25 @@ const Table = ({ sendTables, render = true, newTable, onCreateTable }) => {
                         <option value="8">d8</option>
                         <option value="10">d10</option>
                         <option value="12">d12</option>
-                        <option value="20">d20</option>
+                        <option value="20" selected>d20</option>
                         <option value="100">d100</option>
                     </select>
                     <button onClick={createTable}>Create</button>
                     {/* <button onClick={cancel}>Cancel</button> */}
+                </div>
 
+                <ul className='tablesList child-borders'>
+                    {
+                        tables.map(table => (
+                            <li key={table._id} draggable="true" className='border'
+                                onDragStart={e => handleDragStart(e, table)}
+                            ><span className='name'>{table.name}</span> <span className='die'>{table.die}</span></li>//on dragStart store data in dataTransfer
+                        ))
+                    }
                 </ul>
             </>
-        )
-    }
 
-    if (render)
-        return (
-            <ul className='tablesList child-borders'>
-                {
-                    tables.map(table => (
-                        <li key={table._id} draggable="true" className='border'
-                            onDragStart={e => handleDragStart(e, table)}
-                        >{table.name}</li>//on dragStart store data in dataTransfer
-                    ))
-                }
-            </ul>
+
         )
 }
 

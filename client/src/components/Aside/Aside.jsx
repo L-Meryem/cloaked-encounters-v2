@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import { BiCollection, BiLinkAlt, BiBulb, BiShareAlt, BiPlus } from "react-icons/bi";
 import Table from '../Table/Table';
-import Chain from './Chain/Chain';
+import Chain from './Chain';
 
 const Aside = ({ loadChain, onCreateTable }) => {
-    const [isNewTable, setIsNewTable] = useState(false);
-
-    const createTableOn = () => {
-        console.log("Plus clicked!");
-        setIsNewTable(true);
-    };
 
     return (
         < aside className="">
@@ -27,19 +20,16 @@ const Aside = ({ loadChain, onCreateTable }) => {
                 <label htmlFor="tab4" className='border'>Share</label>
 
                 <div className="content border" id="content1">
-                    <button onClick={createTableOn} >
-                        <BiPlus />
-                    </button>
-                    <Table newTable={isNewTable} onCreateTable={onCreateTable} />
+                    <Table onCreateTable={onCreateTable} />
                 </div>
                 <div className="content border" id="content2">
                     <Chain onLoadChain={loadChain} />
                 </div>
                 <div className="content border" id="content3">
-                    <h4>Seeds</h4>
+                    <p>Save your favorite chain results</p>
                 </div>
                 <div className="content border" id="content4">
-                   <h4>Shared tables</h4>
+                   <p>comming soon...</p>
                 </div>
             </div>
 

@@ -1,6 +1,6 @@
 :root {
   --main-color: skyblue;
-  --accent-color: rgb(225, 97, 74);
+  --accent-color: rgb(255, 101, 74);
   --off-white-bg: rgb(255, 242, 234);
   --solid-white: white;
   --dark-grey-bg: rgb(44, 44, 44);
@@ -111,12 +111,12 @@ main {
 }
 
 #viewer .alert {
-border: none;
-color: var(--dark-grey-bg);
-font-size: 1rem;
-margin: .4rem 0;
-padding: .4rem;
-background-color: var(--accent-color);
+  border: none;
+  color: var(--dark-grey-bg);
+  font-size: 1rem;
+  margin: .4rem 0;
+  padding: .4rem;
+  background-color: var(--accent-color);
 }
 
 #viewer .chain-list input[type="checkbox"] {
@@ -188,29 +188,75 @@ aside {
 }
 
 
-.tabs label{
+.tabs label {
   color: var(--dark-grey-bg);
   padding: .3rem;
   background-color: var(--main-color);
   z-index: 999;
 }
 
-.content{
+.content {
   height: 85vh;
   margin-top: -.5rem;
   overflow-y: scroll;
 }
 
 
-.tablesList{
+.tablesList {
   padding: 0;
 }
 
-.tablesList li{
-  padding : .5rem;
+.tablesList li {
   width: 85%;
   margin: .5rem auto;
   text-align: center;
   background-color: var(--accent-color);
-  color: var(--off-white-bg);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+}
+
+.tablesList .die {
+  font-weight: normal;
+  text-align: right;
+  border-left: 1px solid black;
+  /* padding: .5rem; */
+  flex: 1;
+  font-size: .8rem;
+}
+
+.tablesList .name {
+  flex: 4;
+}
+
+aside .createTable{
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 2.4rem;
+}
+
+aside .createTable input,
+aside .createTable select{
+  display: block;
+  width: 4rem;
+  height: 100%;
+}
+
+aside .createTable input{
+  text-align: right;
+}
+
+aside .createTable button{
+background-color: var(--main-color);
+font-weight: bold;
+font-size: .8rem;;
+}
+
+aside .chain li{
+  justify-content: center;
 }
