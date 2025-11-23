@@ -17,18 +17,27 @@ const saveRowChangesToDb = async (table, row) => {
     }
 };
 
-const deleteRowFromDb = async (tableId, rowId) => {
+const saveNewTableToDb = async table => {
     try {
-        const deleteRow = await fetch(`/api/tables/${tableId}/rows/${rowId}`, {
-            method: "DELETE",
-            credentials: 'include', //send session cookie
+        const saveToBb = await fetch(`/api/tables`, {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: table.name,
+                die: table.die,
+                entries: table.entries.map(entry => ({
+                    roll: entry.roll,
+                    entry: entry.entry
+                }))
+            })
         });
-        return deleteRow.ok;
+        return saveToBb;
     } catch (error) {
         console.log(error);
     }
 };
 
-
-
-export { saveRowChangesToDb, deleteRowFromDb };
+export { saveRowChangesToDb, saveNewTableToDb };

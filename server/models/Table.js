@@ -7,7 +7,7 @@ const TableSchema = new Schema({
     entries: [
         {
             id: mongoose.ObjectId,
-            roll: String, // could be 4 or between 4 and 6
+            roll: Number,
             entry: String 
         }
     ],

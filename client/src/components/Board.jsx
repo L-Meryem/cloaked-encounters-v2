@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import Table from './Table/Table';
 
-import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Background, useReactFlow, MarkerType } from '@xyflow/react';
+import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Background, useReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import TableNode from './Table/TableNode';
 
@@ -16,10 +16,9 @@ const nodeTypes = {
   tableNode: TableNode,
 };
 
-const Board = ({nodes, setNodes, edges, setEdges}) => {
-  // const [nodes, setNodes] = useState([]);
-  // const [edges, setEdges] = useState([]);
-  const [initialized, setInitialized] = useState(false); //Fix for: node position overrides after every render
+const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, setCurrentChainId }) => {
+
+  const [chainName, setChainName] = useState('New chain');
 
   const reactFlowInstance = useReactFlow();
 
@@ -72,16 +71,8 @@ const Board = ({nodes, setNodes, edges, setEdges}) => {
     console.log('edges', edges);
   }, [edges]);
 
-  //convert tables to nodes
-  // const convertTables = tables => {
-  //   if (!initialized) {
-  //     setNodes(tableToNode(tables));
-  //     setInitialized(true);
-  //   }
-  // }
-
   const saveAsChain = async () => {
-    await saveChain('First Chain', nodes, edges);
+    await saveChain(chainName, nodes, edges, currentChainId);
   };
 
   const edgeOptions = {
@@ -110,7 +101,6 @@ const Board = ({nodes, setNodes, edges, setEdges}) => {
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      {/* sendTables={convertTables} get all user tables to the board*/}
       <Table render={false} />
 
       <ReactFlow
@@ -132,7 +122,11 @@ const Board = ({nodes, setNodes, edges, setEdges}) => {
         color="#888"
         variant="dots"
       />
-      <button onClick={saveAsChain} style={{ position: 'relative', top: '-60px' }}>Save Chain</button>
+      <div style={{ position: 'relative', top: '-60px' }}>
+        <input type="text" value={chainName} placeholder='Chain Name'
+          onChange={e => setChainName(e.target.value)} />
+        <button onClick={saveAsChain} >Save Chain</button>
+      </div>
     </div>
   );
 }

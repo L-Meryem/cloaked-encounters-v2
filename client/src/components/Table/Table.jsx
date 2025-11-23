@@ -1,8 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-const Table = ({ sendTables, render = true }) => {
+const Table = ({ sendTables, render = true, newTable, onCreateTable }) => { 
     const [tables, setTables] = useState([]);
+
+    const [dieType, setDieType] = useState(20); // d20
+    const [dieCount, setDieCount] = useState(1);// 1d20
 
     useEffect(() => {
         const fetchTables = async () => {
@@ -20,6 +23,36 @@ const Table = ({ sendTables, render = true }) => {
         e.dataTransfer.effectAllowed = 'move';
     };
 
+    const createTable = () => {
+        const die = `${dieCount}d${dieType}`;
+        onCreateTable(die); //Home page fn
+    }
+
+      if (newTable) {
+        return (
+            <>
+                <input type="number" name="dieCount" id="dieCount" min="1" max="10"
+                    placeholder='Die count' value={dieCount}
+                    onChange={e => setDieCount(e.target.value)} />
+                <ul>
+                    <select name="dieType" id="dieType" value={dieType}
+                        onChange={e => setDieType(e.target.value)}>
+                        <option value="4">d4</option>
+                        <option value="6">d6</option>
+                        <option value="8">d8</option>
+                        <option value="10">d10</option>
+                        <option value="12">d12</option>
+                        <option value="20">d20</option>
+                        <option value="100">d100</option>
+                    </select>
+                    <button onClick={createTable}>Create</button>
+                    {/* <button onClick={cancel}>Cancel</button> */}
+
+                </ul>
+            </>
+        )
+    }
+
     if (render)
         return (
             <ul>
@@ -27,8 +60,7 @@ const Table = ({ sendTables, render = true }) => {
                     tables.map(table => (
                         <li key={table._id} draggable="true"
                             onDragStart={e => handleDragStart(e, table)}
-                        >{table.name}</li>
-                        //on dragStart store data in dataTransfer
+                        >{table.name}</li>//on dragStart store data in dataTransfer
                     ))
                 }
             </ul>

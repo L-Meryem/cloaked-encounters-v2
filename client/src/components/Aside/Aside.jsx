@@ -1,17 +1,27 @@
-import React from 'react';
-import { BiCollection, BiLinkAlt, BiBulb, BiShareAlt } from "react-icons/bi";
+import React, { useState } from 'react';
+import { BiCollection, BiLinkAlt, BiBulb, BiShareAlt, BiPlus } from "react-icons/bi";
 import Table from '../Table/Table';
-import Chain from '../Aside/Chain/Chain';
+import Chain from './Chain/Chain';
 
-const Aside = ({loadChain}) => {
+const Aside = ({ loadChain, onCreateTable }) => {
+    const [isNewTable, setIsNewTable] = useState(false);
+
+    const createTableOn = () => {
+        console.log("Plus clicked!");
+        setIsNewTable(true);
+    };
+
     return (
         < div className="tabs tabs-lift flex h-full w-full" >
             <label className="tab flex-1 bg-pink-400">
-                <input type="radio" name="my_tabs_4" defaultChecked  />
+                <input type="radio" name="my_tabs_4" defaultChecked />
                 <BiCollection />
             </label>
             <div className="tab-content bg-pink-100 border-base-300 p-6">
-                <Table/>
+                <button onClick={createTableOn} >
+                    <BiPlus />
+                </button>
+                <Table newTable={isNewTable} onCreateTable={onCreateTable} />
             </div>
 
             <label className="tab flex-1 bg-yellow-300">
@@ -19,7 +29,7 @@ const Aside = ({loadChain}) => {
                 <BiLinkAlt />
             </label>
             <div className="tab-content bg-yellow-100 border-base-300 p-6">
-                <Chain onLoadChain={loadChain}/>
+                <Chain onLoadChain={loadChain} />
             </div>
 
             <label className="tab flex-1 bg-green-300">

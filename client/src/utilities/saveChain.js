@@ -1,4 +1,4 @@
-const saveChain = async (chainName, nodes, edges) => {
+const saveChain = async (chainName, nodes, edges, chainId = null) => {
   try {
     //no source
     const startNode = nodes.find(node =>
@@ -22,6 +22,7 @@ const saveChain = async (chainName, nodes, edges) => {
       width: node.width,
       height: node.height
     }));
+
     const justEdges = edges.map(edge => ({
       id: edge.id,
       source: edge.source,
@@ -31,20 +32,28 @@ const saveChain = async (chainName, nodes, edges) => {
       label: edge.label
     }));
 
-     const payload = {
-      name: chainName,
-      tables: orderedTablesById,
-      flowData: {
-        nodes: justNodes,
-        edges: justEdges
-      }
-    };
+      let method = "POST";
+      let url = "/api/chains";
+    //check if chain already exists
+    if (chainId && chainId !== null) {
+      const check = await fetch(`/api/chains/${chainId}`, {
+        credentials: 'include'
+      });
 
-    const saveToBb = await fetch("/api/chains", {
-      method: "POST",
+    
+
+      if (check.ok) {
+        method = "PUT";
+        url = `/api/chains/${chainId}`;
+      }
+    }
+
+    const saveToBb = await fetch(url, {
+      method: method,
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: 'include',
       body: JSON.stringify({
         name: chainName,
         tables: orderedTablesById,
