@@ -7,7 +7,6 @@ import '@xyflow/react/dist/style.css';
 import TableNode from './Table/TableNode';
 
 import tableToNode from '../utilities/tableToNode';
-import saveChain from '../utilities/saveChain';
 import isConnectionValid from '../utilities/validateEdges';
 
 
@@ -16,9 +15,7 @@ const nodeTypes = {
   tableNode: TableNode,
 };
 
-const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, setCurrentChainId }) => {
-
-  const [chainName, setChainName] = useState('New chain');
+const Board = ({ nodes, setNodes, edges, setEdges, currentChainId }) => {
 
   const reactFlowInstance = useReactFlow();
 
@@ -71,38 +68,29 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, setCurrentCha
     console.log('edges', edges);
   }, [edges]);
 
-  const saveAsChain = async () => {
-    await saveChain(chainName, nodes, edges, currentChainId);
-  };
-
   const edgeOptions = {
     style: {
-      stroke: 'blue',
+      stroke: 'red',
       strokeWidth: 3,
     },
     labelStyle: {
-      fontSize: '20px',
-      fill: 'white'
-    }, labelBgStyle: {
-      fill: 'blue',
-      opacity: 0.8
+      fontSize: '25px',
+      fill: 'black'
     },
-    labelBgPadding: [4, 4],
+    labelBgStyle: {
+      fill: 'rgb(255, 242, 234)',
+    },
     markerEnd: {
       type: 'arrowclosed',
-      color: 'blue',
+      color: 'red',
       width: 15,
       height: 15
     }
   };
 
   return (
-    <div style={{ width: '100%', height: '100%' }}
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
-    >
+    <div id="board" onDragOver={handleDragOver} onDrop={handleDrop}>
       <Table render={false} />
-
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -115,18 +103,15 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, setCurrentCha
         panOnScroll={true}
         nodeTypes={nodeTypes}
         defaultEdgeOptions={edgeOptions}
-      />
-      <Background
-        gap={20}
-        size={1}
-        color="#888"
-        variant="dots"
-      />
-      <div style={{ position: 'relative', top: '-60px' }}>
-        <input type="text" value={chainName} placeholder='Chain Name'
-          onChange={e => setChainName(e.target.value)} />
-        <button onClick={saveAsChain} >Save Chain</button>
-      </div>
+        defaultViewport={{ x: 0, y: 0, zoom: 0.5 }}
+      >
+        <Background
+          gap={20}
+          size={1}
+          color="#8888883b"
+          variant="lines"
+        />
+      </ReactFlow>
     </div>
   );
 }

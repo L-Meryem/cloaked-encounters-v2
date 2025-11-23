@@ -55,10 +55,10 @@ const Table = ({ sendTables, render = true, newTable, onCreateTable }) => {
 
     if (render)
         return (
-            <ul>
+            <ul className='tablesList child-borders'>
                 {
                     tables.map(table => (
-                        <li key={table._id} draggable="true"
+                        <li key={table._id} draggable="true" className='border'
                             onDragStart={e => handleDragStart(e, table)}
                         >{table.name}</li>//on dragStart store data in dataTransfer
                     ))

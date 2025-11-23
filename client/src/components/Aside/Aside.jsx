@@ -12,45 +12,38 @@ const Aside = ({ loadChain, onCreateTable }) => {
     };
 
     return (
-        < div className="tabs tabs-lift flex h-full w-full" >
-            <label className="tab flex-1 bg-pink-400">
-                <input type="radio" name="my_tabs_4" defaultChecked />
-                <BiCollection />
-            </label>
-            <div className="tab-content bg-pink-100 border-base-300 p-6">
-                <button onClick={createTableOn} >
-                    <BiPlus />
-                </button>
-                <Table newTable={isNewTable} onCreateTable={onCreateTable} />
+        < aside className="">
+            <div className="row flex-spaces tabs">
+                <input id="tab1" type="radio" name="tabs" defaultChecked />
+                <label htmlFor="tab1" className='border'>Tables</label>
+
+                <input id="tab2" type="radio" name="tabs" />
+                <label htmlFor="tab2" className='border'>Chains</label>
+
+                <input id="tab3" type="radio" name="tabs" />
+                <label htmlFor="tab3" className='border'>Seed</label>
+
+                <input id="tab4" type="radio" name="tabs" />
+                <label htmlFor="tab4" className='border'>Share</label>
+
+                <div className="content border" id="content1">
+                    <button onClick={createTableOn} >
+                        <BiPlus />
+                    </button>
+                    <Table newTable={isNewTable} onCreateTable={onCreateTable} />
+                </div>
+                <div className="content border" id="content2">
+                    <Chain onLoadChain={loadChain} />
+                </div>
+                <div className="content border" id="content3">
+                    <h4>Seeds</h4>
+                </div>
+                <div className="content border" id="content4">
+                   <h4>Shared tables</h4>
+                </div>
             </div>
 
-            <label className="tab flex-1 bg-yellow-300">
-                <input type="radio" name="my_tabs_4" />
-                <BiLinkAlt />
-            </label>
-            <div className="tab-content bg-yellow-100 border-base-300 p-6">
-                <Chain onLoadChain={loadChain} />
-            </div>
-
-            <label className="tab flex-1 bg-green-300">
-                <input type="radio" name="my_tabs_4" />
-                <BiBulb />
-            </label>
-            <div className="tab-content bg-green-100 border-base-300 p-6">
-                <ul>
-                    <li>seed 1</li>
-                    <li>seed 2</li>
-                </ul>
-            </div>
-
-            <label className="tab flex-1 bg-blue-300">
-                <input type="radio" name="my_tabs_4" />
-                <BiShareAlt />
-            </label>
-            <div className="tab-content bg-blue-100 border-base-300 p-6">
-                <p>Shared tables....</p>
-            </div>
-        </div >
+        </aside >
     )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Board from '../components/Board';
@@ -7,15 +7,16 @@ import Viewer from '../components/Viewer';
 import { ReactFlowProvider } from '@xyflow/react';
 import tableToNode from '../utilities/tableToNode';
 import creatEmptyTable from '../utilities/createTable';
+import saveChain from '../utilities/saveChain';
 
 const HomePage = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
-  const [currentChainId, setCurrentChainId] = useState(null);
   const [currentChain, setCurrentChain] = useState(null);
+  const [currentChainId, setCurrentChainId] = useState(null);
+  const [chainName, setChainName] = useState('New chain');
+  const [viewerMessage, setViewerMessage] = useState('');
 
-  const [viewerHeight, setViewerHeight] = useState(160);
-  const [isResizing, setIsResizing] = useState(false);
 
   //load chain from aside to board
   const loadChain = async (chainId) => {
@@ -28,6 +29,7 @@ const HomePage = () => {
         setEdges(chain.data.flowData.edges);
         setCurrentChainId(chain.data._id);
         setCurrentChain(chain.data);
+        setChainName(chain.data.name);
         console.log("Chain loaded!", chain.data);
       }
 
@@ -43,63 +45,76 @@ const HomePage = () => {
     setCurrentChainId(null);
   }
 
-  const startResize = () => {
-    setIsResizing(true);
-  };
-
-  const stopResize = () => {
-    setIsResizing(false);
-  };
-
-  const resize = (e) => {
-    if (isResizing) {
-      const newHeight = window.innerHeight - e.clientY;
-      if (newHeight > 100 && newHeight < 600) {
-        setViewerHeight(newHeight);
-      }
+  const saveAsChain = async () => {
+    if (nodes.length === 0) {
+      setViewerMessage('Add tables and connectors before saving a chain!');
+      return
     }
+
+    // setViewerMessage('');
+    const result = await saveChain(chainName, nodes, edges, currentChainId);
+    if (result.success) {
+      setCurrentChainId(result.data._id);
+      setViewerMessage(`${chainName} saved!`);
+    }
+  };
+
+  const saveAsNewChain = async () => {
+    if (nodes.length === 0) {
+      setViewerMessage('Add tables and connectors before saving a chain!');
+      return
+    }
+
+    const result = await saveChain(chainName, nodes, edges, null);
+    if (result.success) {
+      setCurrentChainId(result.data._id);
+      setViewerMessage(`${chainName} saved!`);
+    }
+  };
+
+  useEffect(() => {
+    if (!viewerMessage) return;
+    setTimeout(() => setViewerMessage(''), 4000);
+  }, [viewerMessage]);
+
+  const clearBoard = () => {
+    setNodes([]);
+    setEdges([]);
+    setCurrentChainId(null);
+    setCurrentChain(null);
+    setChainName('New chain');
+  };
+
+  const clearViewer = () => {
+    
   };
 
   return (
     <ReactFlowProvider>
-      <div
-        className="flex flex-col h-screen"
-        onMouseMove={resize}
-        onMouseUp={stopResize}
-      >
-        <Navbar />
-        <div className="flex flex-1 overflow-hidden">
-          <main className="flex-1 flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto">
-              <Board
-                nodes={nodes}
-                setNodes={setNodes}
-                edges={edges}
-                setEdges={setEdges}
-                currentChainId={currentChainId}
-                setCurrentChainId={setCurrentChainId}
-              />
-            </div>
-            <div
-              onMouseDown={startResize}
-              style={{
-                height: '4px',
-                background: '#ccc',
-                cursor: 'row-resize'
-              }}
-            />
-            <div className=" viewer border-t p-4"
-              style={{
-                height: `${viewerHeight}px`,
-                overflowY: 'auto'
-              }}>
-              <Viewer currentChain={currentChain} />
-            </div>
-          </main>
-          <aside className="w-64 border-l overflow-y-auto">
-            <Aside loadChain={loadChain} onCreateTable={createTable} />
-          </aside>
-        </div>
+      <Navbar />
+      <div className="main-container">
+        <main className="border">
+          <Board
+            nodes={nodes}
+            setNodes={setNodes}
+            edges={edges}
+            setEdges={setEdges}
+            currentChainId={currentChainId}
+            setCurrentChainId={setCurrentChainId}
+          />
+          <Viewer
+            currentChain={currentChain}
+            onClearBoard={clearBoard}
+            onClearViewer={clearViewer}
+            chainName={chainName}
+            onSaveChain={saveAsChain}
+            onSaveNewChain={saveAsNewChain}
+            setChainName={setChainName}
+            currentChainId={currentChainId}
+            viewerMessage={viewerMessage}
+          />
+        </main>
+        <Aside loadChain={loadChain} onCreateTable={createTable} />
       </div>
     </ReactFlowProvider>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
 
-const Viewer = ({ currentChain }) => {
+const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, onClearViewer, currentChainId, viewerMessage }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
 
@@ -47,29 +47,56 @@ const Viewer = ({ currentChain }) => {
   };
 
   return (
-    <div style={{ height: '100%', overflowY: 'auto' }}>
-      {currentChain && (
-        <>
-          <h3>{currentChain.name}</h3>
-          <button onClick={runChainRoller}>Run chain</button>
-          {reRolls.length > 0 && (
-            <button onClick={reRoll}>Reroll</button>
+    <div id="viewer" className='border'>
+      <div className='btn-grp'>
+        {currentChain && (
+          <>
+            <button onClick={runChainRoller}>Run chain</button>
+            {reRolls.length > 0 && (
+              <button onClick={reRoll}>Reroll</button>
+            )}
+          </>
+        )}
+        <button onClick={onSaveChain}>
+          {currentChainId ? 'Update Chain' : 'Save Chain'}
+        </button>
+        {currentChainId && (
+          <button onClick={onSaveNewChain}>Save As New</button>
+        )}
+        <button onClick={onClearBoard}>Clear Board</button>
+        {/* <button onClick={onClearViewer}>Clear Viewer</button> */}
+      </div>
+
+      <div className='chain-list'>
+        <input
+          type="text"
+          value={chainName}
+          placeholder="Chain name..."
+          onChange={e => setChainName(e.target.value)}
+        />
+        <div>
+          {viewerMessage && (
+            <div className="alert">{viewerMessage}</div>
           )}
+        </div>
+        {currentChain && (
           <ul>
             {rolls.map((roll, i) => (
               <li key={i}>
-                <input type="checkbox"
+                <input
+                  type="checkbox"
                   checked={reRolls.includes(i)}
                   onChange={() => toggleRerolls(i)}
                 />
-                {roll.tableName}: {roll.entry}
+                <span className='tableName'>{roll.tableName}</span>
+                <span className='tableRoll'>{roll.entry}</span>
               </li>
             ))}
           </ul>
-        </>
-      )}
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
 export default Viewer;

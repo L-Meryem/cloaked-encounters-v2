@@ -72,10 +72,11 @@ const TableNode = ({ data }) => { //data from tableToNode fn
     };
 
     const handleStyle = {
-        width: 30,
-        height: 20,
-        background: 'blue',
-        border: '2px solid blue',
+        width: 60,
+        height: 15,
+        background: 'skyblue',
+        border: '2px solid black',
+        borderRadius: 0,
     };
 
     return (
@@ -83,7 +84,7 @@ const TableNode = ({ data }) => { //data from tableToNode fn
             <Handle type="target" position={Position.Top} id="top-target" style={handleStyle} />
             <Handle type="source" position={Position.Top} id="top-source" style={handleStyle} />
 
-            <table className='table border bg-blue-400'>
+            <table className='border'>
                 <thead onDoubleClick={expandTable}>
                     <tr>
                         <th>{data.die}</th>
@@ -91,9 +92,11 @@ const TableNode = ({ data }) => { //data from tableToNode fn
                             <input type="text" value={tableName}
                                 onChange={e => setTableName(e.target.value)} />
                         ) : (data.name)}
-                            {isEditMode ? <FaSave onClick={saveRowChanges} /> :
-                                <FaEdit onClick={toggleEdit} />
+                            <div>{
+                                isEditMode ? <FaSave onClick={saveRowChanges} /> : <FaEdit onClick={toggleEdit} />
                             }
+                            </div>
+
                         </th>
                     </tr>
                 </thead>
