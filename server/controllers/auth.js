@@ -4,6 +4,18 @@ const User = require("../models/User");
 const validator = require("validator");
 
 
+const getMe = async (req, res) => {
+    if (req.user)
+        return res. json({
+            success: true,
+            user: { 
+                userName: req.user.userName,
+                email: req.user.email
+            }
+        })
+    return res.status(401).json({success: false, message:"Not logged in"});
+};
+
 const postLogin = async (req, res, next) => {
     const errors = [];
 
@@ -23,7 +35,7 @@ const postLogin = async (req, res, next) => {
         }
 
         if (!user) {
-            return res.status(401).json({ success: false, message: info.message});
+            return res.status(401).json({ success: false, message: info.message });
         }
 
         req.logIn(user, (err) => {
@@ -85,7 +97,7 @@ const postSignup = async (req, res, next) => {
         }
 
         await user.save(); //pre('save')hashes password 
-        
+
         req.logIn(user, (err) => {
             if (err) {
                 return next(err);
@@ -119,4 +131,4 @@ const logout = (req, res) => {
 
 };
 
-module.exports = { postLogin, postSignup, logout };
+module.exports = { getMe, postLogin, postSignup, logout };

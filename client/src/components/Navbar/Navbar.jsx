@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SearchBar from './Search';
 
-const Navbar = ({isLogin})=> {
+const Navbar = ({isLogin, userName})=> {
     return (
         <nav className="border split-nav">
             <div className="nav-brand">
@@ -19,7 +19,7 @@ const Navbar = ({isLogin})=> {
                 </label>
                 <div className="collapsible-body">
                     <ul className="inline">
-                        <li><NavLink to="#">Meryem</NavLink></li>
+                        <li>{userName}</li>
                     </ul>
                 </div>
             </div>
