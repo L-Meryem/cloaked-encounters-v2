@@ -19,8 +19,9 @@ const Login = ({ switchView }) => {
             });
             const loginStatus = await res.json();
             console.log(loginStatus);
-            loginStatus.success ?
-                navigate("/") :
+            if (loginStatus.success) {
+                navigate("/");
+            } else
                 setError(loginStatus.message);
         } catch (error) {
             setError('Something went wrong.')

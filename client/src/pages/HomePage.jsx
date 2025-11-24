@@ -9,8 +9,8 @@ import tableToNode from '../utilities/tableToNode';
 import creatEmptyTable from '../utilities/createTable';
 import saveChain from '../utilities/saveChain';
 
-const HomePage = () => {
-  const [userName, setUserName] = useState('');
+const HomePage = ({userName, setUserName}) => {
+  // const [userName, setUserName] = useState('');
 
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
@@ -20,21 +20,21 @@ const HomePage = () => {
   const [chainName, setChainName] = useState('New chain');
   const [viewerMessage, setViewerMessage] = useState('');
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
-        const data = await res.json();
-        if (data.success)
-          setUserName(data.user.userName);
-        console.log(data.user.userName);
-      } catch (error) {
-        console.log(error);
-      }
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const res = await fetch('/api/auth/me', { credentials: 'include' });
+  //       const data = await res.json();
+  //       if (data.success)
+  //         setUserName(data.user.userName);
+  //       console.log(data.user.userName);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
 
-    }
-    fetchUser();
-  }, []);
+  //   }
+  //   fetchUser();
+  // }, []);
 
 
   //load chain from aside to board
@@ -110,7 +110,7 @@ const HomePage = () => {
 
   return (
     <ReactFlowProvider>
-      <Navbar isLogin={true} userName={userName} />
+      <Navbar isLogin={true} userName={userName} setUserName={setChainName} />
       <div className="main-container">
         <main className="border">
           <Board

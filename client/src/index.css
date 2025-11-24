@@ -50,7 +50,7 @@ nav .menu {
 }
 
 nav {
-  background-image: url(../src/assets/strip-no-bg.png);
+  background-image: url(../src/assets/strip.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -331,16 +331,36 @@ aside .chain li {
 }
 
 
-.auth {
+.center {
   height: 91vh;
   display: flex;
   justify-content: center;
+}
+
+.encounters {
   background:
     url('../src/assets/strip-2.png') no-repeat top / 180%,
     url('../src/assets/strip-3.png') no-repeat center / 180%,
     url('../src/assets/strip-4.png') no-repeat bottom / 180%;
 
   animation: rolling 50s linear infinite;
+}
+
+.lost {
+  background-color: var(--off-white-bg);
+}
+
+.lost h3 {
+  text-align: center;
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.lost img {
+  height: auto;
+  width: 10rem;
+  margin: auto;
+  border: none;
 }
 
 @keyframes rolling {
