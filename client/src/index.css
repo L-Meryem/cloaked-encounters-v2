@@ -4,7 +4,7 @@
   --off-white-bg: rgb(255, 242, 234);
   --solid-white: white;
   --dark-grey-bg: rgb(44, 44, 44);
-  ;
+  --min-width: 432px;
 }
 
 body {
@@ -13,16 +13,40 @@ body {
 
 nav {
   background-color: var(--main-color);
+  min-width: var(--min-width);
 }
 
 nav a {
   background-color: var(--main-color);
 }
 
+nav .user {
+  font-size: 1.4rem;
+  padding: 0 1rem;
+  background-color: var(--accent-color);
+}
+
+nav .exit {
+  height: 1.7rem;
+  width: 1.7rem;
+  min-height: 1.7rem;
+  min-width: 1.7rem;
+}
+
+nav .menu {
+  display: flex;
+  gap: .3rem;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
 #search {
   position: relative;
-  right: -19rem;
+  /* right: -18rem; */
   background-color: var(--off-white-bg);
+  height: 2rem;
 }
 
 nav {
@@ -32,13 +56,6 @@ nav {
   background-size: contain;
 }
 
-main {
-
-  display: flex;
-  flex-direction: column;
-  flex: 4;
-
-}
 
 .main-container {
   display: flex;
@@ -46,6 +63,7 @@ main {
   padding: 0.2rem 0.5rem;
   gap: 0.2rem;
   height: calc(100vh - 4rem);
+  min-width: var(--min-width);
 }
 
 #board {
@@ -187,6 +205,14 @@ aside {
   flex: 1;
 }
 
+main {
+
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+
+}
+
 
 .tabs label {
   color: var(--dark-grey-bg);
@@ -232,11 +258,12 @@ aside {
 }
 
 aside .createTable {
-  margin-top: .5rem;
+  margin: .5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
   height: 2.4rem;
 }
 
@@ -255,7 +282,7 @@ aside .createTable button {
   background-color: var(--main-color);
   font-weight: bold;
   font-size: .8rem;
-  ;
+  margin: 0;
 }
 
 aside .chain li {
@@ -269,7 +296,7 @@ aside .chain li {
   background-color: var(--accent-color);
 }
 
-.login h1{
+.login h1 {
   text-align: center;
   margin: 0;
   margin-bottom: 1rem;
@@ -298,7 +325,7 @@ aside .chain li {
   justify-content: space-evenly;
 }
 
-.login form .switch{
+.login form .switch {
   background-color: var(--dark-grey-bg);
   color: var(--off-white-bg)
 }
@@ -323,5 +350,25 @@ aside .chain li {
 
   to {
     background-position: 0% top, 100% center, 0% bottom;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  nav h3 {
+    /* font-size: 1.4rem; */
+    text-align: center;
+  }
+
+  nav .menu {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  main {
+    min-height: 83vh;
   }
 }
