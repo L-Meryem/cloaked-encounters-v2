@@ -91,7 +91,7 @@ const HomePage = () => {
 
   return (
     <ReactFlowProvider>
-      <Navbar />
+      <Navbar isLogin={true}/>
       <div className="main-container">
         <main className="border">
           <Board

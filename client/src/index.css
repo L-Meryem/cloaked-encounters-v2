@@ -231,7 +231,7 @@ aside {
   flex: 4;
 }
 
-aside .createTable{
+aside .createTable {
   margin-top: .5rem;
   display: flex;
   flex-direction: row;
@@ -241,22 +241,87 @@ aside .createTable{
 }
 
 aside .createTable input,
-aside .createTable select{
+aside .createTable select {
   display: block;
   width: 4rem;
   height: 100%;
 }
 
-aside .createTable input{
+aside .createTable input {
   text-align: right;
 }
 
-aside .createTable button{
-background-color: var(--main-color);
-font-weight: bold;
-font-size: .8rem;;
+aside .createTable button {
+  background-color: var(--main-color);
+  font-weight: bold;
+  font-size: .8rem;
+  ;
 }
 
-aside .chain li{
+aside .chain li {
   justify-content: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  background-color: var(--accent-color);
+}
+
+.login h1{
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1rem;
+  color: var(--off-white-bg);
+  font-size: 3rem;
+}
+
+.login form {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.login form input {
+  background-color: var(--off-white-bg);
+}
+
+.login form button {
+  background-color: var(--main-color);
+}
+
+.login form .btn-grp {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login form .switch{
+  background-color: var(--dark-grey-bg);
+  color: var(--off-white-bg)
+}
+
+
+.auth {
+  height: 91vh;
+  display: flex;
+  justify-content: center;
+  background:
+    url('../src/assets/strip-2.png') no-repeat top / 180%,
+    url('../src/assets/strip-3.png') no-repeat center / 180%,
+    url('../src/assets/strip-4.png') no-repeat bottom / 180%;
+
+  animation: rolling 50s linear infinite;
+}
+
+@keyframes rolling {
+  from {
+    background-position: 100% top, 0% center, 100% bottom;
+  }
+
+  to {
+    background-position: 0% top, 100% center, 0% bottom;
+  }
 }

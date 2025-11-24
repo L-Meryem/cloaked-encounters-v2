@@ -2,14 +2,15 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SearchBar from './Search';
 
-const Navbar = () => {
+const Navbar = ({isLogin})=> {
     return (
         <nav className="border split-nav">
             <div className="nav-brand">
                 <h3><Link to="#">Cloaked Encounter</Link></h3>
             </div>
-            <SearchBar />
-            <div className="collapsible">
+            {isLogin && (<SearchBar />)}
+            {isLogin && (
+                 <div className="collapsible">
                 <input id="collapsible1" type="checkbox" name="collapsible1" />
                 <label htmlFor="collapsible1">
                     <div className="bar1"></div>
@@ -22,6 +23,8 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
+            )}
+           
         </nav>
     )
 }

@@ -43,7 +43,7 @@ const Table = ({ sendTables, render = true, onCreateTable }) => {
                         <option value="8">d8</option>
                         <option value="10">d10</option>
                         <option value="12">d12</option>
-                        <option value="20" selected>d20</option>
+                        <option value="20">d20</option>
                         <option value="100">d100</option>
                     </select>
                     <button onClick={createTable}>Create</button>
