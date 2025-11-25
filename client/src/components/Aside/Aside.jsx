@@ -4,6 +4,7 @@ import Chain from './Chain';
 import SharedTables from './SharedTables';
 
 const Aside = ({ loadChain, onCreateTable }) => {
+    const [isShared, setIsShared] = useState({});
 
     return (
         < aside className="">
@@ -21,7 +22,7 @@ const Aside = ({ loadChain, onCreateTable }) => {
                 <label htmlFor="tab4" className='border'>Shared</label>
 
                 <div className="content border" id="content1">
-                    <Table onCreateTable={onCreateTable} />
+                    <Table onCreateTable={onCreateTable} isShared={isShared} setIsShared={setIsShared} />
                 </div>
                 <div className="content border" id="content2">
                     <Chain onLoadChain={loadChain} />
@@ -30,7 +31,7 @@ const Aside = ({ loadChain, onCreateTable }) => {
                     <p>Save your favorite chain results</p>
                 </div>
                 <div className="content border" id="content4">
-                   <SharedTables/>
+                    <SharedTables isShared={isShared} setIsShared={setIsShared}/>
                 </div>
             </div>
 

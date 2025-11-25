@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-const SharedTables = () => {
+const SharedTables = (isShared, setIsShared) => {
     const [sharedTables, setSharedTables] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const SharedTables = () => {
         };
 
         fetchSharedTables();
-    }, []);
+    }, [[JSON.stringify(isShared)]]);
 
 
     return (

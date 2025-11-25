@@ -4,13 +4,11 @@ import ShareBtnOff from '../../assets/share-off.png'
 import ShareBtnOn from '../../assets/share-on.png'
 import { toggleShareTable } from '../../utilities/api';
 
-const Table = ({ sendTables, render = true, onCreateTable }) => {
+const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared }) => {
     const [tables, setTables] = useState([]);
 
     const [dieType, setDieType] = useState(20); // d20
     const [dieCount, setDieCount] = useState(1);// 1d20
-
-    const [isShared, setIsShared] = useState({});// 1d20
 
     useEffect(() => {
         const fetchTables = async () => {
@@ -37,7 +35,6 @@ const Table = ({ sendTables, render = true, onCreateTable }) => {
         setIsShared(prev => ({ ...prev, [table_id]: !isShared }));
         await toggleShareTable(table_id, isShared);
     }
-
 
     if (render)
         return (
@@ -68,7 +65,7 @@ const Table = ({ sendTables, render = true, onCreateTable }) => {
                             >
                                 <img className='share' 
                                 src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff} 
-                                onClick={() => toggleShare(table._id, table.shared)} alt="share table button" />
+                                onClick={() => toggleShare(table._id, isShared[table._id] ?? table.shared)} alt="share table button" />
                                 <span className='name'>{table.name}</span>
                                 <span className='die'>{table.die}</span>
                             </li>//on dragStart store data in dataTransfer
