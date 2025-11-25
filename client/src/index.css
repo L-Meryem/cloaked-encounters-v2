@@ -257,6 +257,14 @@ main {
   flex: 4;
 }
 
+.tablesList .share,
+.tablesList .trash {
+ width: 20px;
+}
+aside{
+  min-width: 300px;
+}
+
 aside .createTable {
   margin: .5rem;
   display: flex;

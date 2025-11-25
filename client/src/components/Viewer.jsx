@@ -64,7 +64,6 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
           <button onClick={onSaveNewChain}>Save As New</button>
         )}
         <button onClick={onClearBoard}>Clear Board</button>
-        {/* <button onClick={onClearViewer}>Clear Viewer</button> */}
       </div>
 
       <div className='chain-list'>

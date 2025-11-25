@@ -75,6 +75,7 @@ In the future, I hope to add features that will allow my community to share thei
 - [The open source guides](https://opensource.guide/)
 - [React PaperCSS](https://hacker0limbo.github.io/react-papercss-design/en-US) For react friendly PaperCSS.
 - [Character doodles](https://gordyh.itch.io/public-domain-character-doodles) by Gordy Higgins.
+- [Game-icons.net](https://game-icons.net/)
 
 <p align="right">
   <a href="#top">

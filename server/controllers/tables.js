@@ -52,15 +52,19 @@ const addTable = async (req, res) => {
 // Only updates name or die
 const updateTable = async (req, res) => {
     try {
+        const updatedTable = {
+            name: req.body.name,
+            die: req.body.die,
+        }
+        if("shared" in req.body)
+            updatedTable.shared = req.body.shared;
+
         const table = await Table.findOneAndUpdate(
             {
                 _id: req.params.id,
                 author: req.user.id
             },
-            {
-                name: req.body.name,
-                die: req.body.die
-            },
+            updatedTable,
             { new: true } //return updated table
         );
 
@@ -81,10 +85,10 @@ const deleteTable = async (req, res) => {
             author: req.user.id
         });
 
-         if (!table) {
+        if (!table) {
             return res.status(404).json({ success: false, error: "Table not found." });
         }
-        
+
         res.status(200).json({ success: true, data: table });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

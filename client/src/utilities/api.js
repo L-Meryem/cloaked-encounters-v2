@@ -40,4 +40,23 @@ const saveNewTableToDb = async table => {
     }
 };
 
-export { saveRowChangesToDb, saveNewTableToDb };
+const toggleShareTable = async (tableId, shared) => {
+    try {
+        const res = await fetch(`/api/tables/${tableId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                shared: shared ? false : true
+            })
+        });
+        return res;
+    } catch (error) {
+        console.log(error); 
+    }
+};
+
+
+export { saveRowChangesToDb, saveNewTableToDb, toggleShareTable };

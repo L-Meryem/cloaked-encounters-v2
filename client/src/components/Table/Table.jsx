@@ -1,11 +1,16 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import ShareBtnOff from '../../assets/share-off.png'
+import ShareBtnOn from '../../assets/share-on.png'
+import { toggleShareTable } from '../../utilities/api';
 
 const Table = ({ sendTables, render = true, onCreateTable }) => {
     const [tables, setTables] = useState([]);
 
     const [dieType, setDieType] = useState(20); // d20
     const [dieCount, setDieCount] = useState(1);// 1d20
+
+    const [isShared, setIsShared] = useState({});// 1d20
 
     useEffect(() => {
         const fetchTables = async () => {
@@ -26,6 +31,11 @@ const Table = ({ sendTables, render = true, onCreateTable }) => {
     const createTable = () => {
         const die = `${dieCount}d${dieType}`;
         onCreateTable(die); //Home page fn
+    }
+
+    const toggleShare = async (table_id, isShared) => {
+        setIsShared(prev => ({ ...prev, [table_id]: !isShared }));
+        await toggleShareTable(table_id, isShared);
     }
 
 
@@ -50,17 +60,22 @@ const Table = ({ sendTables, render = true, onCreateTable }) => {
                     {/* <button onClick={cancel}>Cancel</button> */}
                 </div>
 
-                <ul className='tablesList child-borders'>
+                <ul className='tablesList child-borders child-shadows-hover'>
                     {
                         tables.map(table => (
                             <li key={table._id} draggable="true" className='border'
                                 onDragStart={e => handleDragStart(e, table)}
-                            ><span className='name'>{table.name}</span> <span className='die'>{table.die}</span></li>//on dragStart store data in dataTransfer
+                            >
+                                <img className='share' 
+                                src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff} 
+                                onClick={() => toggleShare(table._id, table.shared)} alt="share table button" />
+                                <span className='name'>{table.name}</span>
+                                <span className='die'>{table.die}</span>
+                            </li>//on dragStart store data in dataTransfer
                         ))
                     }
                 </ul>
             </>
-
 
         )
 }

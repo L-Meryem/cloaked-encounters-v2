@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Table from '../Table/Table';
 import Chain from './Chain';
+import SharedTables from './SharedTables';
 
 const Aside = ({ loadChain, onCreateTable }) => {
 
@@ -14,10 +15,10 @@ const Aside = ({ loadChain, onCreateTable }) => {
                 <label htmlFor="tab2" className='border'>Chains</label>
 
                 <input id="tab3" type="radio" name="tabs" />
-                <label htmlFor="tab3" className='border'>Seed</label>
+                <label htmlFor="tab3" className='border'>Seeds</label>
 
                 <input id="tab4" type="radio" name="tabs" />
-                <label htmlFor="tab4" className='border'>Share</label>
+                <label htmlFor="tab4" className='border'>Shared</label>
 
                 <div className="content border" id="content1">
                     <Table onCreateTable={onCreateTable} />
@@ -29,7 +30,7 @@ const Aside = ({ loadChain, onCreateTable }) => {
                     <p>Save your favorite chain results</p>
                 </div>
                 <div className="content border" id="content4">
-                   <p>comming soon...</p>
+                   <SharedTables/>
                 </div>
             </div>
 
