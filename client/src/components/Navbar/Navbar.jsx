@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import SearchBar from './Search';
 import { useNavigate } from 'react-router-dom';
-import LogoutIcon from '../../assets/exit.png'
+import LogoutIcon from '../../assets/exit.png';
 
 const Navbar = ({ isLogin, userName, setUserName }) => {
     const navigate = useNavigate();
@@ -15,8 +15,8 @@ const Navbar = ({ isLogin, userName, setUserName }) => {
             });
             const data = await res.json();
             if (data.success) {
-                navigate("/guest");
                 setUserName('');
+                navigate("/guest");
             }
             else
                 console.log(error);
@@ -33,7 +33,7 @@ const Navbar = ({ isLogin, userName, setUserName }) => {
             {isLogin && (
                 <div >
                     <ul className="menu">
-                        <li><SearchBar /></li>
+                        {/* <li><SearchBar /></li> */}
                         <li className='user border'>{userName}</li>
                         <li><NavLink onClick={logout}>
                             <img className="exit" src={LogoutIcon} alt="Logout" />

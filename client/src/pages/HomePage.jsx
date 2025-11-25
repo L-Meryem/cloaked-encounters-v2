@@ -10,7 +10,6 @@ import creatEmptyTable from '../utilities/createTable';
 import saveChain from '../utilities/saveChain';
 
 const HomePage = ({userName, setUserName}) => {
-  // const [userName, setUserName] = useState('');
 
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
@@ -19,23 +18,6 @@ const HomePage = ({userName, setUserName}) => {
   const [currentChainId, setCurrentChainId] = useState(null);
   const [chainName, setChainName] = useState('New chain');
   const [viewerMessage, setViewerMessage] = useState('');
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const res = await fetch('/api/auth/me', { credentials: 'include' });
-  //       const data = await res.json();
-  //       if (data.success)
-  //         setUserName(data.user.userName);
-  //       console.log(data.user.userName);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-
-  //   }
-  //   fetchUser();
-  // }, []);
-
 
   //load chain from aside to board
   const loadChain = async (chainId) => {

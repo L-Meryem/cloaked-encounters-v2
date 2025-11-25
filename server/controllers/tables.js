@@ -9,6 +9,15 @@ const getTables = async (req, res) => {
     }
 }
 
+const getSharedTables = async (req, res) => {
+    try {
+        const tables = await Table.find({ shared: true });
+        res.status(200).json({ success: true, data: tables });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+}
+
 const getTable = async (req, res) => {
     try {
         const table = await Table.findOne({
@@ -82,4 +91,4 @@ const deleteTable = async (req, res) => {
     }
 }
 
-module.exports = { getTables, getTable, addTable, updateTable, deleteTable };
+module.exports = { getTables, getSharedTables, getTable, addTable, updateTable, deleteTable };

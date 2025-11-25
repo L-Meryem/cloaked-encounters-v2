@@ -32,6 +32,10 @@ POST {{baseUrl}}/auth/logout
 ### Get all tables
 GET {{baseUrl}}/tables
 
+### Get shared tables
+GET {{baseUrl}}/tables/shared
+
+
 ### Get one table
 GET {{baseUrl}}/tables/{{tableId}}
 

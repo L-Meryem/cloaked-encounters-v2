@@ -7,6 +7,8 @@ const tableRowsController = require("../controllers/tableRows");
 //Table routes///////
 router.get("/", tablesController.getTables);
 
+router.get("/shared", tablesController.getSharedTables);
+
 router.get("/:id", tablesController.getTable);
 
 router.post("/", tablesController.addTable);
