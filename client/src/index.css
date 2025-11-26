@@ -119,7 +119,7 @@ nav {
 }
 
 #viewer .chain-list ul li {
-  margin: .5rem 0;
+  margin: .7rem 0;
 
 }
 
@@ -149,11 +149,19 @@ nav {
 }
 
 #viewer .chain-list .tableName {
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   color: var(--dark-grey-bg);
   padding: .2rem;
   font-weight: bold;
-  margin-right: .6rem;
+  border-color: var(--main-color);
+  color: var(--main-color)
+}
+
+#viewer .chain-list .tableRoll {
+  color: var(--accent-color);
+  margin: 0 .6rem 0 .2rem;
+  border-color: var(--main-color);
+  padding: .1rem .2rem;
 }
 
 
@@ -199,6 +207,10 @@ table thead div {
 table td:first-child {
   text-align: center;
   font-weight: bold;
+}
+
+table .roll:hover{
+ color: var(--accent-color);
 }
 
 aside {

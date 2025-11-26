@@ -87,8 +87,9 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
                   checked={reRolls.includes(i)}
                   onChange={() => toggleRerolls(i)}
                 />
-                <span className='tableName'>{roll.tableName}</span>
-                <span className='tableRoll'>{roll.entry}</span>
+                <span className='tableName border'>{roll.tableName}</span>
+                <span className='tableRoll border'>{roll.roll}</span>
+                <span className='tableEntry'>{roll.entry}</span>
               </li>
             ))}
           </ul>

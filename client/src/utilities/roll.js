@@ -24,7 +24,6 @@ const rollTable = table => {
 
     const { min, max } = getTableRange(table.die);
     let roll, row;
-    let attempts = 0;
 
     //find row
     do {
