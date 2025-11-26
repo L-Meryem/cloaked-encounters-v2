@@ -20,6 +20,14 @@ const getTableRange = (dieType) => {
     return { min, max };
 }
 
+const rollDie = (table, singleRoll) => {
+    const roll = rollTable(table);
+    console.log(singleRoll);
+    console.log(roll.tableName, roll.roll, roll.entry);
+    if (singleRoll)
+        singleRoll(roll);
+};
+
 const rollTable = table => {
 
     const { min, max } = getTableRange(table.die);
@@ -68,4 +76,4 @@ const rollChain = async (tableIds) => {
 
 
 
-export { getTableRange, rollTable, rollChain };
+export { getTableRange, rollTable, rollChain, rollDie};

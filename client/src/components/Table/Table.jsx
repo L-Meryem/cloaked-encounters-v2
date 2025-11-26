@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import ShareBtnOff from '../../assets/share-off.png'
 import ShareBtnOn from '../../assets/share-on.png'
 import { toggleShareTable } from '../../utilities/api';
+import { rollDie, rollTable } from '../../utilities/roll';
 
-const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared }) => {
+const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared, singleRoll }) => {
     const [tables, setTables] = useState([]);
 
     const [dieType, setDieType] = useState(20); // d20
@@ -63,11 +64,11 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
                             <li key={table._id} draggable="true" className='border'
                                 onDragStart={e => handleDragStart(e, table)}
                             >
-                                <img className='share' 
-                                src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff} 
-                                onClick={() => toggleShare(table._id, isShared[table._id] ?? table.shared)} alt="share table button" />
+                                <img className='share'
+                                    src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff}
+                                    onClick={() => toggleShare(table._id, isShared[table._id] ?? table.shared)} alt="share table button" />
                                 <span className='name'>{table.name}</span>
-                                <span className='die'>{table.die}</span>
+                                <span className='die' onClick={() =>rollDie(table, singleRoll)}>{table.die}</span>
                             </li>//on dragStart store data in dataTransfer
                         ))
                     }

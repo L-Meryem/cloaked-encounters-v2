@@ -92,7 +92,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
 
   return (
     <div id="board" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <Table render={false} />
+      <Table render={false} singleRoll={singleRoll} />
       <ReactFlow
         nodes={nodes}
         edges={edges}

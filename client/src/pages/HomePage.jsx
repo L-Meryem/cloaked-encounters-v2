@@ -9,7 +9,7 @@ import tableToNode from '../utilities/tableToNode';
 import creatEmptyTable from '../utilities/createTable';
 import saveChain from '../utilities/saveChain';
 
-const HomePage = ({userName, setUserName}) => {
+const HomePage = ({ userName, setUserName }) => {
 
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
@@ -21,7 +21,7 @@ const HomePage = ({userName, setUserName}) => {
   const [viewerMessage, setViewerMessage] = useState('');
   const [singleRolls, setSingleRolls] = useState([]);
 
-  const singleRoll = roll =>{
+  const singleRoll = roll => {
     setSingleRolls(prev => [...prev, roll]);
   };
 
@@ -119,7 +119,11 @@ const HomePage = ({userName, setUserName}) => {
             singleRolls={singleRolls}
           />
         </main>
-        <Aside loadChain={loadChain} onCreateTable={createTable} />
+        <Aside
+          loadChain={loadChain}
+          onCreateTable={createTable}
+          singleRoll={singleRoll}
+        />
       </div>
     </ReactFlowProvider>
   )

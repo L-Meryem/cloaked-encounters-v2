@@ -2,7 +2,7 @@ import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
 import { FaEdit, FaSave } from 'react-icons/fa';
 import { saveNewTableToDb, saveRowChangesToDb } from '../../utilities/api';
-import { rollTable } from '../../utilities/roll';
+import { rollDie, rollTable } from '../../utilities/roll';
 
 
 const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
@@ -80,12 +80,12 @@ const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
         borderRadius: 0,
     };
 
-    const rollDie = () =>{
-        const roll = rollTable(data);
-        console.log(roll.tableName, roll.roll, roll.entry);
-        if(singleRoll)
-            singleRoll(roll);
-    };
+    // const rollDie = table =>{
+    //     const roll = rollTable(table);
+    //     console.log(roll.tableName, roll.roll, roll.entry);
+    //     if(singleRoll)
+    //         singleRoll(roll);
+    // };
 
     return (
         <div className="table-node">
@@ -95,7 +95,7 @@ const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
             <table className='border'>
                 <thead onDoubleClick={expandTable}>
                     <tr>
-                        <th className="roll" onClick={rollDie}>{data.die}</th>
+                        <th className="roll" onClick={()=>rollDie(data, singleRoll)}>{data.die}</th>
                         <th>{isEditMode ? (
                             <input type="text" value={tableName}
                                 onChange={e => setTableName(e.target.value)} />

@@ -213,6 +213,11 @@ table .roll:hover{
  color: var(--accent-color);
 }
 
+.die:hover{
+  color: var(--off-white-bg);
+  cursor: pointer;
+}
+
 aside {
   flex: 1;
 }

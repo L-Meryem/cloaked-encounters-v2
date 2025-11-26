@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { rollDie } from '../../utilities/roll';
 
 
-const SharedTables = (isShared, setIsShared) => {
+const SharedTables = ({isShared, setIsShared, singleRoll}) => {
     const [sharedTables, setSharedTables] = useState([]);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const SharedTables = (isShared, setIsShared) => {
             {
                 sharedTables.map(table => (
                     <li key={table._id} draggable="true" className='border'>
-                        <span className='name'>{table.name}</span> <span className='die'>{table.die}</span>
+                        <span className='name'>{table.name}</span> <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
                     </li>
                 ))
             }
