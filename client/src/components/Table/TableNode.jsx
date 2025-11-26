@@ -5,7 +5,7 @@ import { saveNewTableToDb, saveRowChangesToDb } from '../../utilities/api';
 import { rollTable } from '../../utilities/roll';
 
 
-const TableNode = ({ data }) => { //data from tableToNode fn
+const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
     const [isExpanded, setIsExpanded] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     //Store edited rows
@@ -83,6 +83,8 @@ const TableNode = ({ data }) => { //data from tableToNode fn
     const rollDie = () =>{
         const roll = rollTable(data);
         console.log(roll.tableName, roll.roll, roll.entry);
+        if(singleRoll)
+            singleRoll(roll);
     };
 
     return (

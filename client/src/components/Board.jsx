@@ -10,12 +10,14 @@ import tableToNode from '../utilities/tableToNode';
 import isConnectionValid from '../utilities/validateEdges';
 
 
-//Register custom nodes
-const nodeTypes = {
-  tableNode: TableNode,
-};
 
-const Board = ({ nodes, setNodes, edges, setEdges, currentChainId }) => {
+
+const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll }) => {
+
+  //Register custom nodes
+  const nodeTypes = {
+    tableNode: props => <TableNode {...props} singleRoll={singleRoll} />
+  };
 
   const reactFlowInstance = useReactFlow();
 

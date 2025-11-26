@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
 
-const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, onClearViewer, currentChainId, viewerMessage }) => {
+const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, singleRolls }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
 
@@ -63,7 +63,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
         {currentChainId && (
           <button onClick={onSaveNewChain}>Save As New</button>
         )}
-        <button onClick={onClearBoard}>Clear Board</button>
+        <button onClick={onClearBoard}>Clear</button>
       </div>
 
       <div className='chain-list'>
@@ -78,6 +78,17 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
             <div className="alert">{viewerMessage}</div>
           )}
         </div>
+        {singleRolls && singleRolls.length > 0 && (
+          <ul>
+            {singleRolls.map((roll, i) => (
+              <li key={i}>
+                <span className='tableName border'>{roll.tableName}</span>
+                <span className='tableRoll border'>{roll.roll}</span>
+                <span className='tableEntry'>{roll.entry}</span>
+              </li>
+            ))}
+          </ul>
+        )}
         {currentChain && (
           <ul>
             {rolls.map((roll, i) => (

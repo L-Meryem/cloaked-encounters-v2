@@ -17,7 +17,13 @@ const HomePage = ({userName, setUserName}) => {
   const [currentChain, setCurrentChain] = useState(null);
   const [currentChainId, setCurrentChainId] = useState(null);
   const [chainName, setChainName] = useState('New chain');
+
   const [viewerMessage, setViewerMessage] = useState('');
+  const [singleRolls, setSingleRolls] = useState([]);
+
+  const singleRoll = roll =>{
+    setSingleRolls(prev => [...prev, roll]);
+  };
 
   //load chain from aside to board
   const loadChain = async (chainId) => {
@@ -84,10 +90,7 @@ const HomePage = ({userName, setUserName}) => {
     setCurrentChainId(null);
     setCurrentChain(null);
     setChainName('New chain');
-  };
-
-  const clearViewer = () => {
-
+    setSingleRolls([]);
   };
 
   return (
@@ -102,17 +105,18 @@ const HomePage = ({userName, setUserName}) => {
             setEdges={setEdges}
             currentChainId={currentChainId}
             setCurrentChainId={setCurrentChainId}
+            singleRoll={singleRoll}
           />
           <Viewer
             currentChain={currentChain}
             onClearBoard={clearBoard}
-            onClearViewer={clearViewer}
             chainName={chainName}
             onSaveChain={saveAsChain}
             onSaveNewChain={saveAsNewChain}
             setChainName={setChainName}
             currentChainId={currentChainId}
             viewerMessage={viewerMessage}
+            singleRolls={singleRolls}
           />
         </main>
         <Aside loadChain={loadChain} onCreateTable={createTable} />
