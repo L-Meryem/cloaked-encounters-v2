@@ -272,11 +272,13 @@ main {
 
 .tablesList .name {
   flex: 4;
+  cursor: grab;
 }
 
 .tablesList .share,
 .tablesList .trash {
  width: 20px;
+ cursor: pointer;
 }
 aside{
   min-width: 300px;
@@ -312,6 +314,7 @@ aside .createTable button {
 
 aside .chain li {
   justify-content: center;
+  cursor: pointer;
 }
 
 .login {

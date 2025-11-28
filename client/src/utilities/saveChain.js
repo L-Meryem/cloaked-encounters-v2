@@ -18,7 +18,10 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
       id: node.id,
       type: node.type,
       position: node.position,
-      data: node.data,
+      data: { // only store ids
+        _id: node.data._id,
+        tableId: node.data._id
+      },  
       width: node.width,
       height: node.height
     }));
@@ -66,6 +69,7 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
 
     const isSaved = await saveToBb.json();
     console.log("Chain saved!", isSaved);
+    return isSaved;
   } catch (error) {
     console.log("Failed to save the chain", error);
   }
