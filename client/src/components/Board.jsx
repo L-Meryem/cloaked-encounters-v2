@@ -14,9 +14,20 @@ import isConnectionValid from '../utilities/validateEdges';
 
 const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll }) => {
 
+  const handleToggleState = (nodeId, stateKey) => {
+    setNodes(nodes => nodes.map(node =>
+      node.id === nodeId
+        ? { ...node, data: { ...node.data, [stateKey]: !node.data[stateKey] } }
+        : node
+    ));
+  };
+
   //Register custom nodes
   const nodeTypes = {
-    tableNode: props => <TableNode {...props} singleRoll={singleRoll} />
+    tableNode: props => <TableNode {...props}
+      singleRoll={singleRoll}
+      onToggleState={handleToggleState}
+    />
   };
 
   const reactFlowInstance = useReactFlow();

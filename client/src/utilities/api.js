@@ -1,3 +1,21 @@
+const saveTableNameToDB = async (tableId, newName) => {
+    try {
+        const saveToBb = await fetch(`/api/tables/${tableId}`, {
+            method: "PUT",
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: newName
+            })
+        });
+        return saveToBb;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const saveRowChangesToDb = async (table, row) => {
     try {
         const saveToBb = await fetch(`/api/tables/${table._id}/rows/${row._id}`, {
@@ -54,9 +72,9 @@ const toggleShareTable = async (tableId, shared) => {
         });
         return res;
     } catch (error) {
-        console.log(error); 
+        console.log(error);
     }
 };
 
 
-export { saveRowChangesToDb, saveNewTableToDb, toggleShareTable };
+export { saveRowChangesToDb, saveTableNameToDB, saveNewTableToDb, toggleShareTable };

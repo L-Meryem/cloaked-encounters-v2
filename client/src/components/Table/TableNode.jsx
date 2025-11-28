@@ -1,24 +1,28 @@
 import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
 import { FaEdit, FaSave } from 'react-icons/fa';
-import { saveNewTableToDb, saveRowChangesToDb } from '../../utilities/api';
+import { saveNewTableToDb, saveRowChangesToDb, saveTableNameToDB } from '../../utilities/api';
 import { rollDie, rollTable } from '../../utilities/roll';
 
 
-const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [isEditMode, setIsEditMode] = useState(false);
+const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tableToNode fn
+    // const [isExpanded, setIsExpanded] = useState(false);
+    // const [isEditMode, setIsEditMode] = useState(false);
+    const isExpanded = data.isExpanded || false;
+    const isEditMode = data.isEditMode || false;
     //Store edited rows
     const [editedRows, setEditedRows] = useState({});
     const [entries, setEntries] = useState(data.entries); //To trigger a re-render when I change rows
     const [tableName, setTableName] = useState(data.name);
 
     const expandTable = () => {
-        isExpanded ? setIsExpanded(false) : setIsExpanded(true);
+        // isExpanded ? setIsExpanded(false) : setIsExpanded(true);
+         onToggleState(id, 'isExpanded'); 
     };
 
     const toggleEdit = () => {
-        isEditMode ? setIsEditMode(false) : setIsEditMode(true);
+        // isEditMode ? setIsEditMode(false) : setIsEditMode(true);
+        onToggleState(id, 'isEditMode');
     };
 
     //Update rolls and entries///
@@ -49,6 +53,10 @@ const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
             setEntries(finalEntries);
             console.log(`${tableName} saved!`);
         } else {
+
+            if(tableName !== data.name)
+                await saveTableNameToDB(data._id, tableName);
+
             const newEntries = [...entries];
             for (const rowId in editedRows) {
                 const row = editedRows[rowId];
@@ -69,7 +77,8 @@ const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
             setEntries(newEntries);
         }
         setEditedRows({});
-        setIsEditMode(false);
+        // setIsEditMode(false);
+        onToggleState(id, 'isEditMode');
     };
 
     const handleStyle = {
@@ -95,7 +104,7 @@ const TableNode = ({ data, singleRoll }) => { //data from tableToNode fn
             <table className='border'>
                 <thead onDoubleClick={expandTable}>
                     <tr>
-                        <th className="roll" onClick={()=>rollDie(data, singleRoll)}>{data.die}</th>
+                        <th className="roll" onClick={() => rollDie(data, singleRoll)}>{data.die}</th>
                         <th>{isEditMode ? (
                             <input type="text" value={tableName}
                                 onChange={e => setTableName(e.target.value)} />
