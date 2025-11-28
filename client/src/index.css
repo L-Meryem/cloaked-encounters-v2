@@ -4,6 +4,7 @@
   --off-white-bg: rgb(255, 242, 234);
   --solid-white: white;
   --dark-grey-bg: rgb(44, 44, 44);
+  --light-grey-bg: rgb(96, 96, 96);
   --min-width: 432px;
 }
 
@@ -281,10 +282,23 @@ main {
   cursor: pointer;
 }
 
-/* .tablesList .trash {
-  border: none;
-  align-self: center;
-} */
+.tablesList .deleteItem {
+  position: relative;
+}
+
+.tablesList .delete {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  left: -10px;
+  font-size: 1.6rem;
+  color: var(--light-grey-bg);
+}
+
+.tablesList .deleteItem:hover .delete {
+  opacity: 1;
+}
 
 aside {
   min-width: 300px;

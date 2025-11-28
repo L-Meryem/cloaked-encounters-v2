@@ -1,7 +1,7 @@
 import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
 import { FaEdit, FaSave } from 'react-icons/fa';
-import { saveNewTableToDb, saveRowChangesToDb, saveTableNameToDB } from '../../utilities/api';
+import { saveNewTableToDb, saveRowChangesToDb, saveTableNameToDB } from '../../utilities/fetches';
 import { rollDie, rollTable } from '../../utilities/roll';
 
 

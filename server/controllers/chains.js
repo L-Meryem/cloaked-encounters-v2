@@ -72,7 +72,7 @@ const deleteChain = async (req, res) => {
             author: req.user.id
         });
 
-         if (!chain) {
+        if (!chain) {
             return res.status(404).json({ success: false, error: "Chain not found." });
         }
 
@@ -82,5 +82,22 @@ const deleteChain = async (req, res) => {
     }
 }
 
+const deleteTableFromChain = async (req, res) => {
+    try {
+        await Chain.updateMany(
+            { tables: req.params.id },
+            {
+                $pull:{
+                    tables: req.params.id ,
+                    'flowData.nodes': { 'data._id': req.params.id  }
+                }
+            }
+        );
 
-module.exports = { getChains, getChain, addChain, updateChain, deleteChain };
+        res.status(200).json({ success: true});
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+module.exports = { getChains, getChain, addChain, updateChain, deleteChain, deleteTableFromChain };

@@ -58,10 +58,10 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
           </>
         )}
         <button onClick={onSaveChain}>
-          {currentChainId ? 'Update Chain' : 'Save Chain'}
+          {currentChainId ? 'Update' : 'Save'}
         </button>
         {currentChainId && (
-          <button onClick={onSaveNewChain}>Save As New</button>
+          <button onClick={onSaveNewChain}>New save</button>
         )}
         <button onClick={onClearBoard}>Clear</button>
       </div>

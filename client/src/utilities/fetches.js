@@ -58,6 +58,25 @@ const saveNewTableToDb = async table => {
     }
 };
 
+const deleteTable = async tableId => {
+    try {
+
+        // Remove table from chains
+        await fetch(`/api/chains/delete-table/${tableId}`, {
+            method: 'PUT',
+            credentials: 'include'
+        });
+
+        const res = await fetch(`/api/tables/${tableId}`, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 const toggleShareTable = async (tableId, shared) => {
     try {
         const res = await fetch(`/api/tables/${tableId}`, {
@@ -163,7 +182,6 @@ const deleteChain = async chainId => {
     } catch (error) {
         console.log(error);
     }
-
 };
 
-export { saveRowChangesToDb, saveTableNameToDB, saveNewTableToDb, toggleShareTable, saveChain, deleteChain };
+export { saveRowChangesToDb, saveTableNameToDB, saveNewTableToDb, deleteTable, toggleShareTable, saveChain, deleteChain };

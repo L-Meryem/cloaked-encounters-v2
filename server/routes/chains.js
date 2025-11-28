@@ -13,5 +13,7 @@ router.put("/:id", chainController.updateChain);
 
 router.delete("/:id", chainController.deleteChain);
 
+router.delete("/delete-table/:id", chainController.deleteTableFromChain);
+
 
 module.exports = router;
