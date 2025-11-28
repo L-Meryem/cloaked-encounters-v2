@@ -209,11 +209,11 @@ table td:first-child {
   font-weight: bold;
 }
 
-table .roll:hover{
- color: var(--accent-color);
+table .roll:hover {
+  color: var(--accent-color);
 }
 
-.die:hover{
+.die:hover {
   color: var(--off-white-bg);
   cursor: pointer;
 }
@@ -277,10 +277,16 @@ main {
 
 .tablesList .share,
 .tablesList .trash {
- width: 20px;
- cursor: pointer;
+  width: 25px;
+  cursor: pointer;
 }
-aside{
+
+/* .tablesList .trash {
+  border: none;
+  align-self: center;
+} */
+
+aside {
   min-width: 300px;
 }
 

@@ -55,7 +55,6 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
                         <option value="100">d100</option>
                     </select>
                     <button onClick={createTable}>Create</button>
-                    {/* <button onClick={cancel}>Cancel</button> */}
                 </div>
 
                 <ul className='tablesList child-borders child-shadows-hover'>
