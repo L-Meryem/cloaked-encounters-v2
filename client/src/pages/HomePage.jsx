@@ -8,6 +8,7 @@ import { ReactFlowProvider } from '@xyflow/react';
 import tableToNode from '../utilities/tableToNode';
 import creatEmptyTable from '../utilities/createTable';
 import { saveChain } from '../utilities/fetches';
+import { useChain } from '../context/ChainContext';
 
 const HomePage = ({ userName, setUserName }) => {
 
@@ -17,6 +18,7 @@ const HomePage = ({ userName, setUserName }) => {
   const [currentChain, setCurrentChain] = useState(null);
   const [currentChainId, setCurrentChainId] = useState(null);
   const [chainName, setChainName] = useState('New chain');
+  const { refetchChains } = useChain();
 
   const [viewerMessage, setViewerMessage] = useState('');
   const [singleRolls, setSingleRolls] = useState([]);
@@ -83,6 +85,7 @@ const HomePage = ({ userName, setUserName }) => {
     if (result.success) {
       setCurrentChainId(result.data._id);
       setViewerMessage(`${chainName} saved!`);
+      refetchChains();
     }
   };
 
@@ -95,6 +98,7 @@ const HomePage = ({ userName, setUserName }) => {
     const result = await saveChain(chainName, nodes, edges, null);
     if (result.success) {
       setCurrentChainId(result.data._id);
+      refetchChains();
       setViewerMessage(`${chainName} saved!`);
     }
   };
@@ -115,7 +119,7 @@ const HomePage = ({ userName, setUserName }) => {
 
   return (
     <ReactFlowProvider>
-      <Navbar isLogin={true}/>
+      <Navbar isLogin={true} />
       <div className="main-container">
         <main className="border">
           <Board

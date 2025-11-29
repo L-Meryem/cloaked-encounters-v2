@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { FaEdit, FaSave } from 'react-icons/fa';
 import { saveNewTableToDb, saveRowChangesToDb, saveTableNameToDB } from '../../utilities/fetches';
 import { rollDie, rollTable } from '../../utilities/roll';
+import { useTable } from '../../context/TableContext';
 
 
-const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tableToNode fn
-    // const [isExpanded, setIsExpanded] = useState(false);
-    // const [isEditMode, setIsEditMode] = useState(false);
+const TableNode = ({ data, singleRoll, onToggleState, id, updateNodeData }) => { //data from tableToNode fn
+    const { refetchTables } = useTable();
+
     const isExpanded = data.isExpanded || false;
     const isEditMode = data.isEditMode || false;
     //Store edited rows
@@ -17,7 +18,7 @@ const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tab
 
     const expandTable = () => {
         // isExpanded ? setIsExpanded(false) : setIsExpanded(true);
-         onToggleState(id, 'isExpanded'); 
+        onToggleState(id, 'isExpanded');
     };
 
     const toggleEdit = () => {
@@ -51,10 +52,11 @@ const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tab
                 entries: finalEntries
             });
             setEntries(finalEntries);
+            updateNodeData(id, { name: tableName, entries: finalEntries })
             console.log(`${tableName} saved!`);
         } else {
 
-            if(tableName !== data.name)
+            if (tableName !== data.name)
                 await saveTableNameToDB(data._id, tableName);
 
             const newEntries = [...entries];
@@ -65,6 +67,7 @@ const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tab
                     roll: row.roll,
                     entry: row.entry
                 });
+
                 newEntries.forEach(entry => { //Trigger re-render
                     if (entry._id === rowId) {
                         if (row.roll)
@@ -75,10 +78,12 @@ const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tab
                 });
             }
             setEntries(newEntries);
+            updateNodeData(id, { name: tableName, entries: newEntries })
         }
         setEditedRows({});
-        // setIsEditMode(false);
         onToggleState(id, 'isEditMode');
+        refetchTables();
+        
     };
 
     const handleStyle = {
@@ -88,13 +93,6 @@ const TableNode = ({ data, singleRoll, onToggleState, id }) => { //data from tab
         border: '2px solid black',
         borderRadius: 0,
     };
-
-    // const rollDie = table =>{
-    //     const roll = rollTable(table);
-    //     console.log(roll.tableName, roll.roll, roll.entry);
-    //     if(singleRoll)
-    //         singleRoll(roll);
-    // };
 
     return (
         <div className="table-node">

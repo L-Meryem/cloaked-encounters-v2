@@ -1,26 +1,16 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ShareBtnOff from '../../assets/share-off.png'
 import ShareBtnOn from '../../assets/share-on.png'
 import { deleteTable, toggleShareTable } from '../../utilities/fetches';
-import { rollDie, rollTable } from '../../utilities/roll';
+import { rollDie } from '../../utilities/roll';
+import { useTable } from '../../context/TableContext';
 
 const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared, singleRoll }) => {
-    const [tables, setTables] = useState([]);
-
     const [dieType, setDieType] = useState(20); // d20
     const [dieCount, setDieCount] = useState(1);// 1d20
 
-    useEffect(() => {
-        const fetchTables = async () => {
-            const res = await fetch('/api/tables');
-            const tables = await res.json();
-            setTables(tables.data);
-            if (sendTables)
-                sendTables(tables.data);
-        }
-        fetchTables();
-    }, [sendTables]);
+    const { tables, refetchTables } = useTable();
 
     const handleDragStart = (e, table) => {
         e.dataTransfer.setData('application/json', JSON.stringify(table));
@@ -69,9 +59,10 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
                                 <span className='name'>{table.name}</span>
                                 <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
                                 <span className='delete'
-                                    onClick={() => {
+                                    onClick={async() => {
                                         if (window.confirm(`Delete ${table.name}?`)) {
-                                            deleteTable(table._id);
+                                            await deleteTable(table._id);
+                                            refetchTables();
                                         }
                                     }}
                                 >x</span>

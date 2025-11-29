@@ -27,6 +27,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
     tableNode: props => <TableNode {...props}
       singleRoll={singleRoll}
       onToggleState={handleToggleState}
+      updateNodeData={updateNodeData} 
     />
   };
 
@@ -75,6 +76,17 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
     setNodes(nodes => [...nodes, dropNode[0]]);
   };
 
+  const updateNodeData = (nodeId, newData) => {
+    setNodes(nodes =>
+      nodes.map(node => {
+        if (node.id !== nodeId) 
+          return node;
+        const updatedData = { ...node.data, ...newData };
+        return { ...node, data: updatedData };
+      })
+    );
+  };
+
   //log nodes and edges
   useEffect(() => {
     console.log('nodes', nodes);
@@ -103,7 +115,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
 
   return (
     <div id="board" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <Table render={false} singleRoll={singleRoll} />
+      <Table render={false} singleRoll={singleRoll}/>
       <ReactFlow
         nodes={nodes}
         edges={edges}

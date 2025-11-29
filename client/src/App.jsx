@@ -6,10 +6,12 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import GuestPage from './pages/GuestPage';
 import { UserProvider, useUser } from './context/UserContext';
+import { ChainProvider } from './context/ChainContext';
+import { TableProvider } from './context/TableContext';
 
 
 const RequireAuth = ({ children }) => {
-  const {userName, loading} = useUser();
+  const { userName, loading } = useUser();
 
   if (loading) return <div>Loading...</div>;
   if (!userName) return <Navigate to="/guest" replace />;
@@ -23,7 +25,7 @@ const App = () => {
       path: "/",
       element: (
         <RequireAuth>
-          <HomePage/>
+          <HomePage />
         </RequireAuth>
       )
     },
@@ -40,7 +42,11 @@ const App = () => {
 
   return (
     <UserProvider>
-      <RouterProvider router={router} />
+      <ChainProvider>
+        <TableProvider>
+          <RouterProvider router={router} />
+        </TableProvider>
+      </ChainProvider>
     </UserProvider>
   );
 }

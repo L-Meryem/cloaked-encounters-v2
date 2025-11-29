@@ -1,19 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import trash from '../../assets/trash.png'
 import { deleteChain } from '../../utilities/fetches';
+import { useChain } from '../../context/ChainContext';
 
 const Chain = ({ onLoadChain }) => {
-  const [chains, setChains] = useState([]);
-
-  useEffect(() => {
-    const fetchChains = async () => {
-      const res = await fetch('/api/chains');
-      const result = await res.json();
-      setChains(result.data);
-    }
-    fetchChains();
-  }, []);
+  const {chains, refetchChains} = useChain();
 
   return (
     <ul className='tablesList child-borders chain child-shadows-hover'>
@@ -22,9 +12,10 @@ const Chain = ({ onLoadChain }) => {
           <li key={chain._id} className='deleteItem'>
             <span className='name' onClick={() => onLoadChain(chain._id)}>{chain.name}</span>
             <span className='delete'
-              onClick={() => {
+              onClick={async () => {
                 if (window.confirm(`Delete ${chain.name}?`)) {
-                  deleteChain(chain._id);
+                  await deleteChain(chain._id);
+                  refetchChains();
                 }
               }}
             >x</span>
