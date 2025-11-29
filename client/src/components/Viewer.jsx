@@ -54,6 +54,14 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
   return (
     <div id="viewer" className='border'>
       <div className='btn-grp'>
+        <label htmlFor="chainName">Your Chain</label>
+        <input
+        id="chainName"
+          type="text"
+          value={chainName}
+          placeholder="Chain name:..."
+          onChange={e => setChainName(e.target.value)}
+        />
         {currentChain && (
           <>
             <button onClick={runChainRoller}>Run chain</button>
@@ -66,7 +74,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
           {currentChainId ? 'Update chain' : 'Save chain'}
         </button>
         {currentChainId && (
-          <button onClick={onSaveNewChain}>New chain</button>
+          <button onClick={onSaveNewChain}>Clone chain</button>
         )}
         <button onClick={onClearBoard}>Clear</button>
       </div>
@@ -88,17 +96,11 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
             ))}
           </ul>
         )}
-        <input
-          type="text"
-          value={chainName}
-          placeholder="Chain name..."
-          onChange={e => setChainName(e.target.value)}
-        />
         {currentChain && (
           <>
             <ul>
               {rolls.map((roll, i) => (
-                <li key={i}>
+                <li key={i} className='chain-li'>
                   <input
                     type="checkbox"
                     checked={reRolls.includes(i)}

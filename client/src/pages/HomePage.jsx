@@ -84,6 +84,7 @@ const HomePage = ({ userName, setUserName }) => {
     const result = await saveChain(chainName, nodes, edges, currentChainId);
     if (result.success) {
       setCurrentChainId(result.data._id);
+      setCurrentChain(result.data);
       setViewerMessage(`${chainName} saved!`);
       refetchChains();
     }

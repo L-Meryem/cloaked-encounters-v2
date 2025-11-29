@@ -89,14 +89,21 @@ nav {
   padding: .5rem;
 }
 
-#viewer input {
+#viewer label{
+  text-align: center;
   font-size: .8rem;
+}
+
+#viewer input {
+  font-size: .9rem;
   display: inline-block;
   border: 2px dashed var(--main-color);
   vertical-align: middle;
   color: var(--main-color);
-  margin-right: .5rem;
+  margin:.3rem auto;
   padding: .2rem .4rem;
+  width: 80%;
+  text-align: center;
 }
 
 #viewer .btn-grp {
@@ -121,10 +128,12 @@ nav {
 }
 
 #viewer .chain-list ul li {
-  margin: .7rem 0;
-
+  margin: .8rem 0;
 }
 
+#viewer .chain-list .chain-li {
+  margin: .2rem 0;
+}
 #viewer .alert {
   border: none;
   color: var(--dark-grey-bg);
@@ -139,6 +148,7 @@ nav {
   width: 20px !important;
   accent-color: var(--main-color);
   cursor: pointer;
+  margin-right: .3rem;
 }
 
 #viewer .chain-list input[type="checkbox"]:checked {

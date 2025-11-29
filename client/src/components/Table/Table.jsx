@@ -10,7 +10,7 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
     const [dieType, setDieType] = useState(20); // d20
     const [dieCount, setDieCount] = useState(1);// 1d20
 
-    const { tables, refetchTables } = useTable();
+    const { tables, refetchTables, loading } = useTable();
 
     const handleDragStart = (e, table) => {
         e.dataTransfer.setData('application/json', JSON.stringify(table));
@@ -49,25 +49,29 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
 
                 <ul className='tablesList child-borders child-shadows-hover'>
                     {
-                        tables.map(table => (
-                            <li key={table._id} draggable="true" className='border deleteItem'
-                                onDragStart={e => handleDragStart(e, table)}
-                            >
-                                <img className='share'
-                                    src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff}
-                                    onClick={() => toggleShare(table._id, isShared[table._id] ?? table.shared)} alt="share table button" />
-                                <span className='name'>{table.name}</span>
-                                <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
-                                <span className='delete'
-                                    onClick={async() => {
-                                        if (window.confirm(`Delete ${table.name}?`)) {
-                                            await deleteTable(table._id);
-                                            refetchTables();
-                                        }
-                                    }}
-                                >x</span>
-                            </li>//on dragStart store data in dataTransfer
-                        ))
+                        loading ? (
+                            <li>Loading chains...</li>
+                        ) : (
+                            (tables || []).map(table => (
+                                <li key={table._id} draggable="true" className='border deleteItem'
+                                    onDragStart={e => handleDragStart(e, table)}
+                                >
+                                    <img className='share'
+                                        src={(isShared[table._id] ?? table.shared) ? ShareBtnOn : ShareBtnOff}
+                                        onClick={() => toggleShare(table._id, isShared[table._id] ?? table.shared)} alt="share table button" />
+                                    <span className='name'>{table.name}</span>
+                                    <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
+                                    <span className='delete'
+                                        onClick={async () => {
+                                            if (window.confirm(`Delete ${table.name}?`)) {
+                                                await deleteTable(table._id);
+                                                refetchTables();
+                                            }
+                                        }}
+                                    >x</span>
+                                </li>//on dragStart store data in dataTransfer
+                            ))
+                        )
                     }
                 </ul>
             </>

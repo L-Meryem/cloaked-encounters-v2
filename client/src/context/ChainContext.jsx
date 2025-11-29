@@ -4,16 +4,25 @@ const ChainContext = createContext();
 
 const ChainProvider = ({ children }) => {
     const [chains, setChains] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const fetchChains = async () => {
-        const res = await fetch('/api/chains');
-        const result = await res.json();
-        setChains(result.data);
-        setLoading(false);
+        try {
+            const res = await fetch('/api/chains');
+            const result = await res.json();
+            if (result) {
+                setLoading(true);
+                setChains(result.data);
+            }
+        } catch (error) {
+            console.log('Chain fetch error: ', error);
+        } finally {
+            setLoading(false);
+        }
     };
 
-    useEffect(() => {
+      useEffect(() => {
+        console.log('useEffect fired');
         fetchChains();
     }, []);
 
@@ -26,6 +35,6 @@ const ChainProvider = ({ children }) => {
     );
 };
 
-const useChain = ()=> useContext(ChainContext);
+const useChain = () => useContext(ChainContext);
 
 export { ChainProvider, ChainContext, useChain };
