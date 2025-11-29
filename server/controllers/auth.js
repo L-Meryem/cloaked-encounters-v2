@@ -6,9 +6,12 @@ const validator = require("validator");
 
 const getMe = async (req, res) => {
     if (req.user)
+         console.log('req.user:', req.user); // Check what req.user contains
+    console.log('req.user._id:', req.user._id);
         return res. json({
             success: true,
             user: { 
+                userId: req.user._id,
                 userName: req.user.userName,
                 email: req.user.email
             }

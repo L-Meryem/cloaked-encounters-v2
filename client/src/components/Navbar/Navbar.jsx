@@ -3,9 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import SearchBar from './Search';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '../../assets/exit.png';
+import { useUser } from '../../context/UserContext';
 
-const Navbar = ({ isLogin, userName, setUserName }) => {
+const Navbar = ({ isLogin}) => {
     const navigate = useNavigate();
+    const {userName, setUserName} = useUser();
 
     const logout = async () => {
         try {

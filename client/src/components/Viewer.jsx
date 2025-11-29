@@ -88,14 +88,14 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
             ))}
           </ul>
         )}
+        <input
+          type="text"
+          value={chainName}
+          placeholder="Chain name..."
+          onChange={e => setChainName(e.target.value)}
+        />
         {currentChain && (
           <>
-            <input
-              type="text"
-              value={chainName}
-              placeholder="Chain name..."
-              onChange={e => setChainName(e.target.value)}
-            />
             <ul>
               {rolls.map((roll, i) => (
                 <li key={i}>

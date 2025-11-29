@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { rollDie } from '../../utilities/roll';
+import { useUser } from '../../context/UserContext';
+import AddIcon from '../../assets/add.png';
+import { saveNewTableToDb } from '../../utilities/fetches';
 
 
-const SharedTables = ({isShared, setIsShared, singleRoll}) => {
+const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
     const [sharedTables, setSharedTables] = useState([]);
+    const { userId } = useUser();
 
     useEffect(() => {
         const fetchSharedTables = async () => {
@@ -14,14 +18,20 @@ const SharedTables = ({isShared, setIsShared, singleRoll}) => {
 
         fetchSharedTables();
     }, [[JSON.stringify(isShared)]]);
-
-
     return (
         <ul className='tablesList child-borders child-shadows-hover'>
             {
                 sharedTables.map(table => (
-                    <li key={table._id} draggable="true" className='border'>
-                        <span className='name'>{table.name}</span> <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
+                    <li key={table._id} className='border'>
+                        {table.author._id !== userId && (
+                            <img className="addToCollection" src={AddIcon} alt="Copy table to your collection"
+                                onClick={() => {
+                                    if (window.confirm(`Copy ${table.name} table to your collection?`)) {
+                                        saveNewTableToDb(table);
+                                    }
+                                }} />
+                        )}
+                        <span className='name' title={table.author._id !== userId? `By ${table.author.userName}`: "By me"}>{table.name}</span> <span className='die' onClick={() => rollDie(table, singleRoll)}>{table.die}</span>
                     </li>
                 ))
             }

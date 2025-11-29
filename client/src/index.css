@@ -273,7 +273,8 @@ main {
 }
 
 .tablesList .share,
-.tablesList .trash {
+.tablesList .trash,
+.addToCollection {
   width: 25px;
   cursor: pointer;
 }

@@ -115,7 +115,7 @@ const HomePage = ({ userName, setUserName }) => {
 
   return (
     <ReactFlowProvider>
-      <Navbar isLogin={true} userName={userName} setUserName={setChainName} />
+      <Navbar isLogin={true}/>
       <div className="main-container">
         <main className="border">
           <Board

@@ -11,7 +11,7 @@ const getTables = async (req, res) => {
 
 const getSharedTables = async (req, res) => {
     try {
-        const tables = await Table.find({ shared: true });
+        const tables = await Table.find({ shared: true }).populate('author', 'userName');
         res.status(200).json({ success: true, data: tables });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

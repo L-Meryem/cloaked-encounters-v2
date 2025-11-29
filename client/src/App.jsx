@@ -5,9 +5,12 @@ import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import GuestPage from './pages/GuestPage';
+import { UserProvider, useUser } from './context/UserContext';
 
 
-const RequireAuth = ({ userName, loading, children }) => {
+const RequireAuth = ({ children }) => {
+  const {userName, loading} = useUser();
+
   if (loading) return <div>Loading...</div>;
   if (!userName) return <Navigate to="/guest" replace />;
   return children;
@@ -15,37 +18,12 @@ const RequireAuth = ({ userName, loading, children }) => {
 
 
 const App = () => {
-  const [userName, setUserName] = useState(null);
-  const [loading, setLoading] = useState(true); // waith for the fetch before render
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch('/api/auth/me', { credentials: 'include' });
-        const data = await res.json();
-
-        if (data.success) {
-          setUserName(data.user.userName);
-          console.log(data.user.userName);
-        }
-        else
-          setUserName(null);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-
-    }
-    fetchUser();
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <RequireAuth userName={userName} loading={loading}>
-          <HomePage userName={userName} setUserName={setUserName} />
+        <RequireAuth>
+          <HomePage/>
         </RequireAuth>
       )
     },
@@ -60,7 +38,11 @@ const App = () => {
   ]);
 
 
-  return <RouterProvider router={router} />
+  return (
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 }
 
 export default App

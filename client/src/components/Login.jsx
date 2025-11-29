@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
 const Login = ({ switchView }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { setUserName } = useUser();
 
     const checkUser = async e => {
         e.preventDefault();
@@ -20,6 +22,7 @@ const Login = ({ switchView }) => {
             const loginStatus = await res.json();
             console.log(loginStatus);
             if (loginStatus.success) {
+                setUserName(loginStatus.user.userName);
                 navigate("/");
             } else
                 setError(loginStatus.message);
