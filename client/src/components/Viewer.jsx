@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
 
 const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, singleRolls }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
+
+  useEffect(() => {
+    setRolls([]);
+    setReRolls([]);
+  }, [currentChainId]);
 
   const runChainRoller = async () => {
     if (currentChain) {
@@ -58,21 +63,15 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
           </>
         )}
         <button onClick={onSaveChain}>
-          {currentChainId ? 'Update' : 'Save'}
+          {currentChainId ? 'Update chain' : 'Save chain'}
         </button>
         {currentChainId && (
-          <button onClick={onSaveNewChain}>New save</button>
+          <button onClick={onSaveNewChain}>New chain</button>
         )}
         <button onClick={onClearBoard}>Clear</button>
       </div>
 
       <div className='chain-list'>
-        <input
-          type="text"
-          value={chainName}
-          placeholder="Chain name..."
-          onChange={e => setChainName(e.target.value)}
-        />
         <div>
           {viewerMessage && (
             <div className="alert">{viewerMessage}</div>
@@ -90,20 +89,28 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
           </ul>
         )}
         {currentChain && (
-          <ul>
-            {rolls.map((roll, i) => (
-              <li key={i}>
-                <input
-                  type="checkbox"
-                  checked={reRolls.includes(i)}
-                  onChange={() => toggleRerolls(i)}
-                />
-                <span className='tableName border'>{roll.tableName}</span>
-                <span className='tableRoll border'>{roll.roll}</span>
-                <span className='tableEntry'>{roll.entry}</span>
-              </li>
-            ))}
-          </ul>
+          <>
+            <input
+              type="text"
+              value={chainName}
+              placeholder="Chain name..."
+              onChange={e => setChainName(e.target.value)}
+            />
+            <ul>
+              {rolls.map((roll, i) => (
+                <li key={i}>
+                  <input
+                    type="checkbox"
+                    checked={reRolls.includes(i)}
+                    onChange={() => toggleRerolls(i)}
+                  />
+                  <span className='tableName border'>{roll.tableName}</span>
+                  <span className='tableRoll border'>{roll.roll}</span>
+                  <span className='tableEntry'>{roll.entry}</span>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </div>
     </div>

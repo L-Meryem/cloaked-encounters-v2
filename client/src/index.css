@@ -93,9 +93,10 @@ nav {
   font-size: .8rem;
   display: inline-block;
   border: 2px dashed var(--main-color);
-  margin: 0;
   vertical-align: middle;
-  color: var(--main-color)
+  color: var(--main-color);
+  margin-right: .5rem;
+  padding: .2rem .4rem;
 }
 
 #viewer .btn-grp {
@@ -122,11 +123,6 @@ nav {
 #viewer .chain-list ul li {
   margin: .7rem 0;
 
-}
-
-#viewer .chain-list input {
-  display: inline;
-  margin-right: .5rem;
 }
 
 #viewer .alert {
@@ -169,7 +165,7 @@ nav {
 #viewer button {
   font-size: .9rem;
   width: 90%;
-  padding: .3rem;
+  padding: .1rem;
   font-weight: bold;
   background-color: var(--main-color);
 }

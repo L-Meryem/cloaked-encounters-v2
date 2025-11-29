@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Table from '../Table/Table';
 import Chain from './Chain';
-import SharedTables from './SharedTables';
+import SharedTables from '../Table/SharedTables';
 
 const Aside = ({ loadChain, onCreateTable, singleRoll }) => {
     const [isShared, setIsShared] = useState({});
