@@ -3,13 +3,18 @@ const { Schema } = mongoose
 
 const SeedSchema = new Schema({
     name: String,
-    content: String, //What was generated from the chain
+    content: [ //What was generated from the chain
+        {
+            tableName: String,
+            entry: String,
+        }
+    ],
     author: {
-        type:mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-     chain: {
-        type:mongoose.Schema.Types.ObjectId,
+    chain: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Chain"
     }
 });

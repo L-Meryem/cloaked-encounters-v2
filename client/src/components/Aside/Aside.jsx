@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Table from '../Table/Table';
 import Chain from './Chain';
 import SharedTables from '../Table/SharedTables';
+import Seed from './Seed';
 
 const Aside = ({ loadChain, onCreateTable, singleRoll }) => {
     const [isShared, setIsShared] = useState({});
@@ -22,15 +23,18 @@ const Aside = ({ loadChain, onCreateTable, singleRoll }) => {
                 <label htmlFor="tab4" className='border'>Shared</label>
 
                 <div className="content border" id="content1">
+                    <small class="instructions">Create a table or drag one to canvas</small>
                     <Table onCreateTable={onCreateTable} isShared={isShared} setIsShared={setIsShared} singleRoll={singleRoll} />
                 </div>
                 <div className="content border" id="content2">
+                    <small class="instructions">To start, drag a chain to canvas</small>
                     <Chain onLoadChain={loadChain} />
                 </div>
                 <div className="content border" id="content3">
-                    <p>Save your favorite chain results</p>
+                    <Seed/>
                 </div>
                 <div className="content border" id="content4">
+                    <small class="instructions">Heart a table to make your own copy</small>
                     <SharedTables isShared={isShared} setIsShared={setIsShared} singleRoll={singleRoll}/>
                 </div>
             </div>

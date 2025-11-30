@@ -43,6 +43,13 @@ nav .menu {
   height: 100%;
 }
 
+.instructions{
+  color:  var(--light-grey-bg);
+  display: block;
+  text-align: center;
+  font-size: .7rem;
+}
+
 #search {
   position: relative;
   /* right: -18rem; */
@@ -254,6 +261,7 @@ main {
 
 .tablesList {
   padding: 0;
+  margin-top: .4rem;
 }
 
 .tablesList li {

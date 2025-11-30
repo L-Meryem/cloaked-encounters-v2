@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Seed = () => {
   return (
@@ -6,4 +6,4 @@ const Seed = () => {
   )
 }
 
-export default Seed
+export default Seed;

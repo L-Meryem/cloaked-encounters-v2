@@ -19,7 +19,7 @@ const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
         };
 
         fetchSharedTables();
-    }, [[JSON.stringify(isShared)]]);
+    }, [isShared]);
     return (
         <ul className='tablesList child-borders child-shadows-hover'>
             {
@@ -27,9 +27,9 @@ const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
                     <li key={table._id} className='border'>
                         {table.author._id !== userId && (
                             <img className="addToCollection" src={AddIcon} alt="Copy table to your collection"
-                                onClick={() => {
+                                onClick={async () => {
                                     if (window.confirm(`Copy ${table.name} table to your collection?`)) {
-                                        saveNewTableToDb(table);
+                                       await saveNewTableToDb(table);
                                         refetchTables();
                                     }
                                 }} />
