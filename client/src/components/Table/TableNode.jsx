@@ -1,9 +1,10 @@
 import { Handle, Position } from '@xyflow/react';
 import { useState } from 'react';
-import { FaEdit, FaSave } from 'react-icons/fa';
+import { FaEdit, FaSave, FaPaste } from 'react-icons/fa';
 import { saveNewTableToDb, saveRowChangesToDb, saveTableNameToDB } from '../../utilities/fetches';
 import { rollDie, rollTable } from '../../utilities/roll';
 import { useTable } from '../../context/TableContext';
+import pastedTableText from '../../utilities/pastedTable';
 
 
 const TableNode = ({ data, singleRoll, onToggleState, id, updateNodeData }) => { //data from tableToNode fn
@@ -83,7 +84,7 @@ const TableNode = ({ data, singleRoll, onToggleState, id, updateNodeData }) => {
         setEditedRows({});
         onToggleState(id, 'isEditMode');
         refetchTables();
-        
+
     };
 
     const handleStyle = {
@@ -92,6 +93,22 @@ const TableNode = ({ data, singleRoll, onToggleState, id, updateNodeData }) => {
         background: 'skyblue',
         border: '2px solid black',
         borderRadius: 0,
+    };
+
+    const pasteEntries = async () => {
+        const text = await navigator.clipboard.readText();
+
+        if (!text) 
+            return;
+
+        const pasted = pastedTableText(text);
+
+        const updatedEntries = entries.map((entry, i) => ({
+            ...entry,
+            entry: pasted[i]?.entry || entry.entry
+        }));
+
+        setEntries(updatedEntries);
     };
 
     return (
@@ -107,9 +124,10 @@ const TableNode = ({ data, singleRoll, onToggleState, id, updateNodeData }) => {
                             <input type="text" value={tableName}
                                 onChange={e => setTableName(e.target.value)} />
                         ) : (data.name)}
-                            <div>{
-                                isEditMode ? <FaSave onClick={saveRowChanges} /> : <FaEdit onClick={toggleEdit} />
-                            }
+                            <div className='edit'>
+                                {isEditMode && !data._id && (<FaPaste onClick={pasteEntries}/>)}
+
+                                {isEditMode ? <FaSave onClick={saveRowChanges} /> : <FaEdit onClick={toggleEdit} />}                             
                             </div>
 
                         </th>
