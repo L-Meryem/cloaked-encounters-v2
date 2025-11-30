@@ -31,7 +31,8 @@ const addSeed = async (req, res) => {
         const seed = await Seed.create({
             name: req.body.name,
             author: req.user.id,
-            tables: req.body.tables
+            content: req.body.content,
+            chain:req.body.chain, //just Id
         });
         res.status(201).json({ success: true, data: seed });
     } catch (error) {

@@ -87,7 +87,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
         </div>
         {singleRolls && singleRolls.length > 0 && (
           <ul>
-            {singleRolls.map((roll, i) => (
+            {[...singleRolls].reverse().map((roll, i) => (
               <li key={i}>
                 <span className='tableName border'>{roll.tableName}</span>
                 <span className='tableRoll border'>{roll.roll}</span>
