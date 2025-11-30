@@ -3,11 +3,13 @@ import { rollDie } from '../../utilities/roll';
 import { useUser } from '../../context/UserContext';
 import AddIcon from '../../assets/add.png';
 import { saveNewTableToDb } from '../../utilities/fetches';
+import { useTable } from '../../context/TableContext';
 
 
 const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
     const [sharedTables, setSharedTables] = useState([]);
     const { userId } = useUser();
+    const { refetchTables} = useTable();
 
     useEffect(() => {
         const fetchSharedTables = async () => {
@@ -28,6 +30,7 @@ const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
                                 onClick={() => {
                                     if (window.confirm(`Copy ${table.name} table to your collection?`)) {
                                         saveNewTableToDb(table);
+                                        refetchTables();
                                     }
                                 }} />
                         )}
