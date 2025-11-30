@@ -8,8 +8,12 @@ const loadChain = async (chainId, setNodes, setEdges, setCurrentChainId, setCurr
         if (chain.success) {
             // Fetch full table
             const nodesWithFullData = [];
-            for (const node of chain.data.flowData.nodes) {
+
+            // for (const node of chain.data.flowData.nodes) {
+            await Promise.all(chain.data.flowData.nodes.map(async node => {
+
                 const tableId = node.data._id || node.data.tableId;
+
                 if (tableId) {
                     const tableFetch = await fetch(`/api/tables/${tableId}`);
                     const tableData = await tableFetch.json();
@@ -18,13 +22,14 @@ const loadChain = async (chainId, setNodes, setEdges, setCurrentChainId, setCurr
                             ...node,
                             data: tableData.data
                         });
+                        
                     } else {
                         console.log("Failed to load table:", tableId);
                     }
                 } else {
                     console.log("Node has no table ID");
                 }
-            }
+            }));
 
             setNodes(nodesWithFullData);
             setEdges(chain.data.flowData.edges);
