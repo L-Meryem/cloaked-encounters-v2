@@ -24,7 +24,10 @@ const Table = ({ sendTables, render = true, onCreateTable, isShared, setIsShared
 
     const toggleShare = async (table_id, isShared) => {
         setIsShared(prev => ({ ...prev, [table_id]: !isShared }));
-        await toggleShareTable(table_id, isShared);
+        const res = await toggleShareTable(table_id, isShared);
+        if (res.ok) {
+            setIsShared(prev => ({ ...prev, [table_id]: !isShared }));
+        }
     }
 
     if (render)
