@@ -56,7 +56,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
       <div className='btn-grp'>
         <label htmlFor="chainName">Your Chain</label>
         <input
-        id="chainName"
+          id="chainName"
           type="text"
           value={chainName}
           placeholder="Chain name:..."
@@ -88,9 +88,11 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
         {singleRolls && singleRolls.length > 0 && (
           <ul>
             {[...singleRolls].reverse().map((roll, i) => (
-              <li key={i}>
-                <span className='tableName border'>{roll.tableName}</span>
-                <span className='tableRoll border'>{roll.roll}</span>
+              <li key={i} className='single-roll'>
+                <div>
+                  <span className='tableName border'>{roll.tableName}</span>
+                  <span className='tableRoll border'>{roll.roll}</span>
+                </div>
                 <span className='tableEntry'>{roll.entry}</span>
               </li>
             ))}

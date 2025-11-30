@@ -43,7 +43,7 @@ const rollTable = table => {
         // Math.random() * 10 = 0,1,..,9   add 3 to start from 3
         row = table.entries.find(entry => entry.roll === roll);
 
-    } while (!row || row.entry === '' || row.entry.toLowerCase() === 'reroll');
+    } while (!row || !row.entry || row.entry .trim() ==='' || row.entry.trim().toLowerCase() === 'reroll');
 
     return {
         tableName: table.name,
@@ -76,4 +76,4 @@ const rollChain = async (tableIds) => {
 
 
 
-export { getTableRange, rollTable, rollChain, rollDie};
+export { getTableRange, rollTable, rollChain, rollDie };

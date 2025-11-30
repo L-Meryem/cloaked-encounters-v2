@@ -168,7 +168,7 @@ nav {
   padding: .2rem;
   font-weight: bold;
   border-color: var(--main-color);
-  color: var(--main-color)
+  color: var(--main-color);
 }
 
 #viewer .chain-list .tableRoll {
@@ -185,6 +185,20 @@ nav {
   padding: .1rem;
   font-weight: bold;
   background-color: var(--main-color);
+}
+
+#viewer .single-roll{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#viewer .single-roll div{
+  min-width: fit-content;
+}
+
+#viewer .single-roll .tableEntry::first-line{
+  padding-left: .2rem;
 }
 
 .input-grp {
@@ -308,7 +322,7 @@ main {
   cursor: pointer;
   position: absolute;
   top: 3px;
-  left: -10px;
+  left: -15px;
   font-size: 1.6rem;
   color: var(--light-grey-bg);
 }
@@ -426,6 +440,10 @@ aside .chain li {
   width: 10rem;
   margin: auto;
   border: none;
+}
+
+ul li{
+  text-indent: 0;
 }
 
 @keyframes rolling {
