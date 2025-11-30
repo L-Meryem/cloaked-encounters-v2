@@ -8,11 +8,12 @@ import TableNode from './Table/TableNode';
 
 import tableToNode from '../utilities/tableToNode';
 import isConnectionValid from '../utilities/validateEdges';
+import loadChain from '../utilities/loadChain';
 
 
 
 
-const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll }) => {
+const Board = ({ nodes, setNodes, edges, setEdges, currentChainId,setCurrentChainId, setCurrentChain, setChainName, singleRoll }) => {
 
   const handleToggleState = (nodeId, stateKey) => {
     setNodes(nodes => nodes.map(node =>
@@ -27,7 +28,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
     tableNode: props => <TableNode {...props}
       singleRoll={singleRoll}
       onToggleState={handleToggleState}
-      updateNodeData={updateNodeData} 
+      updateNodeData={updateNodeData}
     />
   };
 
@@ -61,25 +62,33 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
   };
+
   const handleDrop = e => {
     e.preventDefault();
-    const dropTable = JSON.parse(e.dataTransfer.getData('application/json'));
-    //Position???
-    const dropPosition = reactFlowInstance.screenToFlowPosition({
-      x: e.clientX,
-      y: e.clientY
-    });
-    console.log(`Drop position for ${JSON.stringify(dropTable.name)}: ${JSON.stringify(dropPosition)}`);
-    //Table to node
-    const dropNode = tableToNode(dropTable, dropPosition.x, dropPosition.y);
-    //Add to nodes
-    setNodes(nodes => [...nodes, dropNode[0]]);
+    const dropData = JSON.parse(e.dataTransfer.getData('application/json'));
+    if (dropData.flowData) {
+      //load chain
+      loadChain(dropData._id, setNodes, setEdges, setCurrentChainId, setCurrentChain, setChainName);
+    } else { //its a table
+      //Position???
+      const dropPosition = reactFlowInstance.screenToFlowPosition({
+        x: e.clientX,
+        y: e.clientY
+      });
+      console.log(`Drop position for ${JSON.stringify(dropData.name)}: ${JSON.stringify(dropPosition)}`);
+      //Table to node
+      const dropNode = tableToNode(dropData, dropPosition.x, dropPosition.y);
+      //Add to nodes
+      setNodes(nodes => [...nodes, dropNode[0]]);
+    }
+
+
   };
 
   const updateNodeData = (nodeId, newData) => {
     setNodes(nodes =>
       nodes.map(node => {
-        if (node.id !== nodeId) 
+        if (node.id !== nodeId)
           return node;
         const updatedData = { ...node.data, ...newData };
         return { ...node, data: updatedData };
@@ -115,7 +124,7 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, singleRoll })
 
   return (
     <div id="board" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <Table render={false} singleRoll={singleRoll}/>
+      <Table render={false} singleRoll={singleRoll} />
       <ReactFlow
         nodes={nodes}
         edges={edges}
