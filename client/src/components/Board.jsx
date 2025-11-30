@@ -13,7 +13,7 @@ import loadChain from '../utilities/loadChain';
 
 
 
-const Board = ({ nodes, setNodes, edges, setEdges, currentChainId,setCurrentChainId, setCurrentChain, setChainName, singleRoll }) => {
+const Board = ({ nodes, setNodes, edges, setEdges, currentChainId, setCurrentChainId, setCurrentChain, setChainName, singleRoll }) => {
 
   const handleToggleState = (nodeId, stateKey) => {
     setNodes(nodes => nodes.map(node =>
@@ -63,12 +63,18 @@ const Board = ({ nodes, setNodes, edges, setEdges, currentChainId,setCurrentChai
     e.dataTransfer.dropEffect = 'move';
   };
 
-  const handleDrop = e => {
+  const handleDrop = async e => {
     e.preventDefault();
     const dropData = JSON.parse(e.dataTransfer.getData('application/json'));
     if (dropData.flowData) {
       //load chain
-      loadChain(dropData._id, setNodes, setEdges, setCurrentChainId, setCurrentChain, setChainName);
+      const isChainLoaded = await loadChain(dropData._id, setNodes, setEdges, setCurrentChainId, setCurrentChain, setChainName);
+
+      if (isChainLoaded)
+        setTimeout(() => {
+          reactFlowInstance.fitView({ padding: 0.3 });
+        }, 0); //wait for react flow to add nodes
+
     } else { //its a table
       //Position???
       const dropPosition = reactFlowInstance.screenToFlowPosition({

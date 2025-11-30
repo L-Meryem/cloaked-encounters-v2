@@ -32,9 +32,14 @@ const loadChain = async (chainId, setNodes, setEdges, setCurrentChainId, setCurr
             setCurrentChain(chain.data);
             setChainName(chain.data.name);
             console.log("Chain loaded!");
+            return true;
         }
+
+        return false;
+
     } catch (error) {
         console.log("Failed to load the chain", error);
+        return false;
     }
 
 };

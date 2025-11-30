@@ -86,12 +86,12 @@ nav {
   position: relative;
   display: flex;
   flex-direction: row-reverse;
-  padding: .5rem;
+  padding: .3rem;
 }
 
 #viewer label{
   text-align: center;
-  font-size: .8rem;
+  font-size: .6rem;
 }
 
 #viewer input {
@@ -100,7 +100,7 @@ nav {
   border: 2px dashed var(--main-color);
   vertical-align: middle;
   color: var(--main-color);
-  margin:.3rem auto;
+  margin:0 auto .3rem auto;
   padding: .2rem .4rem;
   width: 80%;
   text-align: center;
@@ -116,7 +116,7 @@ nav {
 
 #viewer .chain-list {
   flex: 5;
-  padding: .5rem;
+  padding: .2rem;
   overflow-y: scroll;
   font-size: .8rem;
 }

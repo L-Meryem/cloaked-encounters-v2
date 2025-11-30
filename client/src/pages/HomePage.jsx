@@ -66,7 +66,7 @@ const HomePage = ({ userName, setUserName }) => {
 
   useEffect(() => {
     if (!viewerMessage) return;
-    setTimeout(() => setViewerMessage(''), 4000);
+    setTimeout(() => setViewerMessage(''), 2500);
   }, [viewerMessage]);
 
   const clearBoard = () => {
