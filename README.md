@@ -10,7 +10,7 @@ Not every table will work for every game.  Just as a random character from Game 
 
 Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. Cloaked Encounters is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
 
-In the future, I hope to add features that will allow my community to share their favorites with each other.
+<!-- In the future, I hope to add features that will allow my community to share their favorites with each other. -->
 
 <p align="center">
   <a href="#" target="_blank">
@@ -19,38 +19,37 @@ In the future, I hope to add features that will allow my community to share thei
   <sub><em>Wireframe</em></sub>
 </p>
 
+<!-- ## What is Cloaked Encounters?
+
+![A die 4 pointing at the 4th entry of the treasure chest table](image-3.png)
+
+## Stranger in a tavern
+<blockquote>"Your attention is caught by the
+sound of raucous laughter. A
+young man in muddy armor and
+a crossbow slung across his
+back has drawn a small crowd
+of listeners."</blockquote>
+
+![chain roll on tables to generate our tavern npc](image-2.png) -->
+
 ## Features
 
 - Chain results from multiple tables and save them as a **chain** to re-roll later in your games.  
 - Keep a list of chains ready to roll on the spot during your sessions.  
-- Import tables from various sources such as PDFs, blogs, emails, or subreddits.  
+- Import tables from various sources such as PDFs, blogs and posts.  
 - Share your tables with the community in just one click.
 
-## Todo
-- [ ] Tables
-  - [ ] Drag and drob tables from collections to board
-  - [ ] Edit tables
-  - [ ] Copy paste tables from diffwrent sources (pdfs, blogs, ...)
-  - [ ] Detect appropriate die for each table
-  - [ ] Edit die type
-- [ ] Chaines
-  - [ ] Chain tables in a specific order and generate an encounter
-  - [ ] Approve/Reroll parts of a chain
-  - [ ] Save your favorite results as seeds for your adventures
-- [ ] Community
-    - [ ] View other contributers' tables
-    - [ ] Share your own tables
+## Roadmap
+- [X] Copy tables from blogs and posts
+- [ ] Drag row(s) from a table to another
+- [ ] Your own tables/chains/seeds available offline
+- [ ] Collab mode, invite people to build a table together (reddit r/100) no login required
+- [ ] API to access all the shared tables
 - [ ] Open-source documentation
   - [ ] **MIT** license
   - [ ] Writing my **contributions** guidelines
   - [ ] Establishing a **code of conduct**
-
-## Roadmap
-- [ ] Copy tables from blogs and posts
-- [ ] Your own tables/chains/seeds available offline
-- [ ] Collab mode, invite people to build a table together (reddit r/100) no login required
-- [ ] API to access all the shared tables
-- [ ] Drag row(s) from a table to another
 
 ## Tech stack
 
@@ -63,17 +62,18 @@ In the future, I hope to add features that will allow my community to share thei
   <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" />
   <img src="https://img.shields.io/badge/Passport-34E27A?style=for-the-badge&logo=passport&logoColor=black" />
   <img src="https://img.shields.io/badge/Bcrypt-333333?style=for-the-badge&logo=lock&logoColor=white" />
-  <img src="https://img.shields.io/badge/MVC-pattern-blue?style=for-the-badge" />
+  <!-- <img src="https://img.shields.io/badge/MVC-pattern-blue?style=for-the-badge" /> -->
   <img src="https://img.shields.io/badge/REST-API-blue?style=for-the-badge" />
   <img src="https://img.shields.io/badge/PaperCSS-FFFFFF?style=for-the-badge&logo=css3&logoColor=black&labelColor=FFFFFF" />
   <img src="https://img.shields.io/badge/React_Flow-EA3374?style=for-the-badge&logo=react&logoColor=white" />
 
 </p>
 
+<!-- ## License -->
+
 ## Acknowledgments
 
 - [The open source guides](https://opensource.guide/)
-- [React PaperCSS](https://hacker0limbo.github.io/react-papercss-design/en-US) For react friendly PaperCSS.
 - [Character doodles](https://gordyh.itch.io/public-domain-character-doodles) by Gordy Higgins.
 - [Game-icons.net](https://game-icons.net/)
 

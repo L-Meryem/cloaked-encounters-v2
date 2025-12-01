@@ -20,6 +20,7 @@ const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
 
         fetchSharedTables();
     }, [isShared]);
+    
     return (
         <ul className='tablesList child-borders child-shadows-hover'>
             {

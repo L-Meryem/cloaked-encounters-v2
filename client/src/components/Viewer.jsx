@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
+import { saveSeed } from '../utilities/fetches';
 
-const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, singleRolls }) => {
+const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, setViewerMessage, singleRolls }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
 
@@ -51,6 +52,18 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
     }
   };
 
+  const handleSaveSeed = async () => {
+    const seedName = prompt('Seed name:');
+    if(!seedName)
+      return;
+    const res = await saveSeed(seedName, rolls, currentChain._id);
+    const result = await res.json();
+    if (result.success) {
+      setViewerMessage('Seed saved!');
+    } else
+      setViewerMessage('Failed to save seed');
+  };
+
   return (
     <div id="viewer" className='border'>
       <div className='btn-grp'>
@@ -69,6 +82,9 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
               <button onClick={reRoll}>Reroll</button>
             )}
           </>
+        )}
+        {currentChain && (
+          <button onClick={handleSaveSeed}>Save seed</button>
         )}
         <button onClick={onSaveChain}>
           {currentChainId ? 'Update chain' : 'Save chain'}

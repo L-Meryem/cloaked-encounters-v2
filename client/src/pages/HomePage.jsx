@@ -29,7 +29,7 @@ const HomePage = ({ userName, setUserName }) => {
 
   const createTable = (dieType) => {
     const newTable = creatEmptyTable(dieType);
-    const newNode = tableToNode(newTable, 400, 300);
+    const newNode = tableToNode(newTable, 0, 0);
     setNodes(prev => [...prev, newNode[0]]);
     setCurrentChainId(null);
   }
@@ -103,6 +103,7 @@ const HomePage = ({ userName, setUserName }) => {
             setChainName={setChainName}
             currentChainId={currentChainId}
             viewerMessage={viewerMessage}
+            setViewerMessage={setViewerMessage}
             singleRolls={singleRolls}
           />
         </main>
