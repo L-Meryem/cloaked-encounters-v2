@@ -22,6 +22,7 @@ const HomePage = ({ userName, setUserName }) => {
 
   const [viewerMessage, setViewerMessage] = useState('');
   const [singleRolls, setSingleRolls] = useState([]);
+  const [selectedSeed, setSelectedSeed] = useState([]);
 
   const singleRoll = roll => {
     setSingleRolls(prev => [...prev, roll]);
@@ -76,6 +77,7 @@ const HomePage = ({ userName, setUserName }) => {
     setCurrentChain(null);
     setChainName('New chain');
     setSingleRolls([]);
+    setSelectedSeed([]);
   };
 
   return (
@@ -105,11 +107,13 @@ const HomePage = ({ userName, setUserName }) => {
             viewerMessage={viewerMessage}
             setViewerMessage={setViewerMessage}
             singleRolls={singleRolls}
+            selectedSeed={selectedSeed}
           />
         </main>
         <Aside
           onCreateTable={createTable}
           singleRoll={singleRoll}
+          setSelectedSeed={setSelectedSeed}
         />
       </div>
     </ReactFlowProvider>

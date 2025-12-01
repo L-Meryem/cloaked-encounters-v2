@@ -43,8 +43,8 @@ nav .menu {
   height: 100%;
 }
 
-.instructions{
-  color:  var(--light-grey-bg);
+.instructions {
+  color: var(--light-grey-bg);
   display: block;
   text-align: center;
   font-size: .7rem;
@@ -96,7 +96,7 @@ nav {
   padding: .3rem;
 }
 
-#viewer label{
+#viewer label {
   text-align: center;
   font-size: .6rem;
 }
@@ -107,7 +107,7 @@ nav {
   border: 2px dashed var(--main-color);
   vertical-align: middle;
   color: var(--main-color);
-  margin:0 auto .3rem auto;
+  margin: 0 auto .3rem auto;
   padding: .2rem .4rem;
   width: 80%;
   text-align: center;
@@ -141,6 +141,7 @@ nav {
 #viewer .chain-list .chain-li {
   margin: .5rem 0;
 }
+
 #viewer .alert {
   border: none;
   color: var(--dark-grey-bg);
@@ -178,6 +179,30 @@ nav {
   padding: .1rem .2rem;
 }
 
+#viewer .selectedSeed {
+  border-color: var(--main-color);
+  padding: .5rem;
+}
+
+#viewer .selectedSeed .table {
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+  margin-top: .2rem;
+}
+
+#viewer .selectedSeed .tableName {
+  min-width: fit-content;
+  height: fit-content;
+  margin-right: .3rem;
+}
+
+#viewer .selectedSeed .seedName {
+  display: block;
+  margin: 0;
+  padding: .3rem;
+  font-size: 1.2rem;
+}
 
 #viewer button {
   font-size: .9rem;
@@ -187,17 +212,17 @@ nav {
   background-color: var(--main-color);
 }
 
-#viewer .single-roll{
+#viewer .single-roll {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-#viewer .single-roll div{
+#viewer .single-roll div {
   min-width: fit-content;
 }
 
-#viewer .single-roll .tableEntry::first-line{
+#viewer .single-roll .tableEntry::first-line {
   padding-left: .2rem;
 }
 
@@ -442,7 +467,7 @@ aside .chain li {
   border: none;
 }
 
-ul li{
+ul li {
   text-indent: 0;
 }
 

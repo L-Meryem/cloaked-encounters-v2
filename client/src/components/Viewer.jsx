@@ -3,10 +3,10 @@ import { rollChain, rollTable } from '../utilities/roll';
 import { saveSeed } from '../utilities/fetches';
 import { useSeed } from '../context/SeedContext';
 
-const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, setViewerMessage, singleRolls }) => {
+const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, setViewerMessage, singleRolls, selectedSeed }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
-  const {refetchSeeds} = useSeed();
+  const { refetchSeeds } = useSeed();
 
   useEffect(() => {
     setRolls([]);
@@ -56,9 +56,9 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
 
   const handleSaveSeed = async () => {
     const seedName = prompt('Seed name:');
-    if(!seedName)
+    if (!seedName)
       return;
-    if(rolls.length === 0){
+    if (rolls.length === 0) {
       setViewerMessage('Nothing to save');
       return;
     }
@@ -70,6 +70,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
     } else
       setViewerMessage('Failed to save seed');
   };
+  console.log(selectedSeed);
 
   return (
     <div id="viewer" className='border'>
@@ -108,6 +109,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
             <div className="alert">{viewerMessage}</div>
           )}
         </div>
+
         {singleRolls && singleRolls.length > 0 && (
           <ul>
             {[...singleRolls].reverse().map((roll, i) => (
@@ -121,6 +123,25 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
             ))}
           </ul>
         )}
+
+        {selectedSeed && (
+          <ul>
+            {[...selectedSeed].reverse().map(seed => (
+              <li className="border selectedSeed">
+                <span className='seedName'>SEED: {seed.name}</span>
+                <div className='seedResults'>
+                  {seed.content.map(content => (
+                    <div className='table'>
+                      <span className='tableName border'>{content.tableName}</span>
+                      <span className='tableEntry'>{content.entry}</span>
+                    </div>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+
         {currentChain && (
           <>
             <ul>

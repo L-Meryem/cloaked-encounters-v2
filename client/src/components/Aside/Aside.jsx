@@ -4,7 +4,7 @@ import Chain from './Chain';
 import SharedTables from '../Table/SharedTables';
 import Seed from './Seed';
 
-const Aside = ({ loadChain, onCreateTable, singleRoll }) => {
+const Aside = ({ loadChain, onCreateTable, singleRoll, setSelectedSeed }) => {
     const [isShared, setIsShared] = useState({});
 
     return (
@@ -31,7 +31,7 @@ const Aside = ({ loadChain, onCreateTable, singleRoll }) => {
                     <Chain onLoadChain={loadChain} />
                 </div>
                 <div className="content border" id="content3">
-                    <Seed/>
+                    <Seed setSelectedSeed={setSelectedSeed}/>
                 </div>
                 <div className="content border" id="content4">
                     <small className="instructions">Heart a table to make your own copy</small>
