@@ -22,7 +22,6 @@ const ChainProvider = ({ children }) => {
     };
 
       useEffect(() => {
-        console.log('useEffect fired');
         fetchChains();
     }, []);
 

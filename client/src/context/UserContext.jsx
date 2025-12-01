@@ -15,13 +15,10 @@ const UserProvider = ({ children }) => {
             try {
                 const res = await fetch('/api/auth/me', { credentials: 'include' });
                 const data = await res.json();
-                console.log('Full response:', data);
 
                 if (data.success) {
                     setUserName(data.user.userName);
                     setUserId(data.user.userId);
-                    // console.log(data.user.userName);
-                    // console.log(data.user.userId);
                 }
                 else
                     setUserName(null);

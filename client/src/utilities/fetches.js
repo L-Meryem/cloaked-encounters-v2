@@ -185,7 +185,7 @@ const deleteChain = async chainId => {
 };
 
 const saveSeed = async (seedName, rolls, chainId) => {
-   try {
+    try {
         const saveToBb = await fetch(`/api/seeds`, {
             method: "POST",
             credentials: 'include',
@@ -194,7 +194,7 @@ const saveSeed = async (seedName, rolls, chainId) => {
             },
             body: JSON.stringify({
                 name: seedName,
-                content:  rolls.map(roll =>({
+                content: rolls.map(roll => ({
                     tableName: roll.tableName,
                     entry: roll.entry
                 })),
@@ -207,4 +207,16 @@ const saveSeed = async (seedName, rolls, chainId) => {
     }
 };
 
-export { saveRowChangesToDb, saveTableNameToDB, saveNewTableToDb, deleteTable, toggleShareTable, saveChain, deleteChain, saveSeed };
+const deleteSeed = async seedId => {
+    try {
+        const res = await fetch(`/api/seeds/${seedId}`, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export { saveRowChangesToDb, saveTableNameToDB, saveNewTableToDb, deleteTable, toggleShareTable, saveChain, deleteChain, saveSeed, deleteSeed };

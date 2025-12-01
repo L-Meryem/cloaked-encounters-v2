@@ -8,6 +8,7 @@ import GuestPage from './pages/GuestPage';
 import { UserProvider, useUser } from './context/UserContext';
 import { ChainProvider } from './context/ChainContext';
 import { TableProvider } from './context/TableContext';
+import { SeedProvider } from './context/SeedContext';
 
 
 const RequireAuth = ({ children }) => {
@@ -43,9 +44,11 @@ const App = () => {
   return (
     <UserProvider>
       <ChainProvider>
-        <TableProvider>
-          <RouterProvider router={router} />
-        </TableProvider>
+        <SeedProvider>
+          <TableProvider>
+            <RouterProvider router={router} />
+          </TableProvider>
+        </SeedProvider>
       </ChainProvider>
     </UserProvider>
   );

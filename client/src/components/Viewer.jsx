@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
 import { saveSeed } from '../utilities/fetches';
+import { useSeed } from '../context/SeedContext';
 
 const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, setViewerMessage, singleRolls }) => {
   const [rolls, setRolls] = useState([]);
   const [reRolls, setReRolls] = useState([]);
+  const {refetchSeeds} = useSeed();
 
   useEffect(() => {
     setRolls([]);
@@ -60,6 +62,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
     const result = await res.json();
     if (result.success) {
       setViewerMessage('Seed saved!');
+      refetchSeeds();
     } else
       setViewerMessage('Failed to save seed');
   };
