@@ -58,6 +58,10 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
     const seedName = prompt('Seed name:');
     if(!seedName)
       return;
+    if(rolls.length === 0){
+      setViewerMessage('Nothing to save');
+      return;
+    }
     const res = await saveSeed(seedName, rolls, currentChain._id);
     const result = await res.json();
     if (result.success) {
