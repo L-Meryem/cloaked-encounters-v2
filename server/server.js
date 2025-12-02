@@ -14,7 +14,13 @@ const StoreInDB = require("connect-mongo"); //not compatible with mongodb 7!
 
 //Middleware///////
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://l-meryem.github.io',
+    'http://localhost:8000'
+  ],
+  credentials: true
+}));
 
 app.use(
     session({
