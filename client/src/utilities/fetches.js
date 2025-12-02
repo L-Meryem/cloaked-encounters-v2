@@ -135,7 +135,7 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
         }));
 
         let method = "POST";
-        let url = "/api/chains";
+        let url = `${API_URL}/chains`;
         //check if chain already exists
         if (chainId && chainId !== null) {
             const check = await fetch(`${API_URL}/chains/${chainId}`, {
