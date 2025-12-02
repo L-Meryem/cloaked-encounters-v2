@@ -15,11 +15,11 @@ const StoreInDB = require("connect-mongo"); //not compatible with mongodb 7!
 //Middleware///////
 app.use(express.json());
 app.use(cors({
-  origin: [
-    'https://l-meryem.github.io',
-    'http://localhost:8000'
-  ],
-  credentials: true
+    origin: [
+        'https://l-meryem.github.io',
+        'http://localhost:8000'
+    ],
+    credentials: true
 }));
 
 app.use(
@@ -29,7 +29,13 @@ app.use(
         saveUninitialized: false, //no sessions for visitors
         store: StoreInDB.create({
             mongoUrl: process.env.DB_STRING
-        })
+        }),
+        cookie: {
+            secure: true,
+            sameSite: 'none',
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24 // 24h
+        }
     })
 );
 

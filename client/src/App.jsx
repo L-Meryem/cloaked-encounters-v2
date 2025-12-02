@@ -38,7 +38,10 @@ const App = () => {
       path: "*",
       element: <NotFoundPage />
     }
-  ]);
+  ],{
+    basename: "/cloaked-encounters-v2"
+  }
+);
 
 
   return (
