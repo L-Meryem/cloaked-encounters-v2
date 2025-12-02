@@ -9,7 +9,9 @@ const ChainProvider = ({ children }) => {
 
     const fetchChains = async () => {
         try {
-            const res = await fetch(`${API_URL}/chains`);
+            const res = await fetch(`${API_URL}/chains`,
+                {credentials:'include'}
+            );
             const result = await res.json();
             if (result) {
                 setLoading(true);

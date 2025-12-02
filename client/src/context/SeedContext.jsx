@@ -10,7 +10,9 @@ const SeedProvider = ({ children }) => {
 
     const fetchSeed = async () => {
         try {
-            const res = await fetch(`${API_URL}/seeds`);
+            const res = await fetch(`${API_URL}/seeds`,
+                {credentials:'include'}
+            );
             const result = await res.json();
             if (result) {
                 setLoading(true);

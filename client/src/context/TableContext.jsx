@@ -11,7 +11,9 @@ const TableProvider = ({ children }) => {
 
     const fetchTables = async () => {
         try {
-            const res = await fetch(`${API_URL}/tables`);
+            const res = await fetch(`${API_URL}/tables`,
+                {credentials:'include'}
+            );
             const result = await res.json();
             if (result) {
                 setLoading(true);

@@ -14,7 +14,9 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await fetch(`${API_URL}/auth/me`, { credentials: 'include' });
+                const res = await fetch(`${API_URL}/auth/me`, 
+                    { credentials: 'include'}
+                );
                 const data = await res.json();
 
                 if (data.success) {

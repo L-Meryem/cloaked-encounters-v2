@@ -30,11 +30,13 @@ app.use(
         store: StoreInDB.create({
             mongoUrl: process.env.DB_STRING
         }),
+        proxy: true,
         cookie: {
             secure: true,
             sameSite: 'none',
             httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 // 24h
+            maxAge: 1000 * 60 * 60 * 24, // 24h
+            domain: '.vercel.app'
         }
     })
 );
