@@ -14,7 +14,10 @@ const StoreInDB = require("connect-mongo"); //not compatible with mongodb 7!
 
 //Middleware///////
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://cloaked-encounters.onrender.com/',
+    credentials: true
+}));
 
 app.use(
     session({
