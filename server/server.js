@@ -14,13 +14,7 @@ const StoreInDB = require("connect-mongo"); //not compatible with mongodb 7!
 
 //Middleware///////
 app.use(express.json());
-app.use(cors({
-    origin: [
-        'https://l-meryem.github.io',
-        'http://localhost:8000'
-    ],
-    credentials: true
-}));
+app.use(cors());
 
 app.use(
     session({
@@ -35,8 +29,7 @@ app.use(
             secure: true,
             sameSite: 'none',
             httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24, // 24h
-            domain: '.vercel.app'
+            maxAge: 3600000 * 24, // 24h
         }
     })
 );

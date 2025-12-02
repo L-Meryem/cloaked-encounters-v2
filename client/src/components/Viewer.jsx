@@ -71,7 +71,6 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
     } else
       setViewerMessage('Failed to save seed');
   };
-  console.log(selectedSeed);
 
   return (
     <div id="viewer" className='border'>

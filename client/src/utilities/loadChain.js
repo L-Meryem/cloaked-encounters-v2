@@ -3,7 +3,9 @@ import { API_URL } from "./config";
 //load chain from aside to board
 const loadChain = async (chainId, setNodes, setEdges, setCurrentChainId, setCurrentChain, setChainName) => {
     try {
-        const chainFetch = await fetch(`${API_URL}/chains/${chainId}`);
+        const chainFetch = await fetch(`${API_URL}/chains/${chainId}`,
+            {credentials:'include'}
+        );
         const chain = await chainFetch.json();
 
         if (chain.success) {
@@ -16,7 +18,9 @@ const loadChain = async (chainId, setNodes, setEdges, setCurrentChainId, setCurr
                 const tableId = node.data._id || node.data.tableId;
 
                 if (tableId) {
-                    const tableFetch = await fetch(`${API_URL}/tables/${tableId}`);
+                    const tableFetch = await fetch(`${API_URL}/tables/${tableId}`,
+                        {credentials:'include'}
+                    );
                     const tableData = await tableFetch.json();
                     if (tableData.success && tableData.data) {
                         nodesWithFullData.push({

@@ -142,8 +142,6 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
                 credentials: 'include'
             });
 
-
-
             if (check.ok) {
                 method = "PUT";
                 url = `${API_URL}/chains/${chainId}`;

@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
-//https://cloaked-encounters-v2.vercel.app
 export default defineConfig({
   plugins: [react()],
   base:'/cloaked-encounters-v2/',

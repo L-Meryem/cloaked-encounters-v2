@@ -27,7 +27,6 @@ const TableProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        console.log('useEffect fired');
         fetchTables();
     }, [userId]);
 
