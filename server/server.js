@@ -3,6 +3,7 @@ const app = express();
 const session = require("express-session");
 const passport = require("passport");
 const cors = require('cors');
+const path = require('path');
 
 require("dotenv").config({ path: "./config/.env" });
 const PORT = process.env.PORT;
@@ -55,6 +56,11 @@ app.use("/auth", authRoutes);
 app.use("/tables", tableRoutes);
 app.use("/chains", chainRoutes);
 app.use("/seeds", seedRoutes);
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 //Server//////////
 app.listen(PORT, () => {
