@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { rollChain, rollTable } from '../utilities/roll';
 import { saveSeed } from '../utilities/fetches';
 import { useSeed } from '../context/SeedContext';
+import { API_URL } from '../utilities/config';
 
 const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewChain, onClearBoard, currentChainId, viewerMessage, setViewerMessage, singleRolls, selectedSeed }) => {
   const [rolls, setRolls] = useState([]);
@@ -39,7 +40,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
 
       for (const tableIndex of reRolls) {
         const tableId = currentChain.tables[tableIndex];
-        const res = await fetch(`/api/tables/${tableId}`);
+        const res = await fetch(`${API_URL}/tables/${tableId}`);
         const result = await res.json();
 
         if (result.success) {

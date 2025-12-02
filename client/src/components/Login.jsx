@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
+import { API_URL } from '../utilities/config';
 
 const Login = ({ switchView }) => {
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const Login = ({ switchView }) => {
     const checkUser = async e => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/auth/login', {
+            const res = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include', //send and save cookies for auth

@@ -4,6 +4,7 @@ import SearchBar from './Search';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from '../../assets/exit.png';
 import { useUser } from '../../context/UserContext';
+import { API_URL } from '../../utilities/config';
 
 const Navbar = ({ isLogin}) => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Navbar = ({ isLogin}) => {
 
     const logout = async () => {
         try {
-            const res = await fetch('/api/auth/logout', {
+            const res = await fetch(`${API_URL}/auth/logout`, {
                 method: 'POST',
                 credentials: 'include'
             });

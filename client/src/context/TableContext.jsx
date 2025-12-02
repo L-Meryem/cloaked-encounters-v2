@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useUser } from './UserContext';
+import { API_URL } from '../utilities/config';
 
 const TableContext = createContext();
 
@@ -10,7 +11,7 @@ const TableProvider = ({ children }) => {
 
     const fetchTables = async () => {
         try {
-            const res = await fetch('/api/tables');
+            const res = await fetch(`${API_URL}/tables`);
             const result = await res.json();
             if (result) {
                 setLoading(true);

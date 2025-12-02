@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { API_URL } from '../utilities/config';
 
 const ChainContext = createContext();
 
@@ -8,7 +9,7 @@ const ChainProvider = ({ children }) => {
 
     const fetchChains = async () => {
         try {
-            const res = await fetch('/api/chains');
+            const res = await fetch(`${API_URL}/chains`);
             const result = await res.json();
             if (result) {
                 setLoading(true);

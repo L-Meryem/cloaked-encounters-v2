@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../utilities/config';
 
 const Signup = ({ switchView }) => {
     const [userName, setUsername] = useState('');
@@ -12,7 +13,7 @@ const Signup = ({ switchView }) => {
     const makeUser = async e => {
         e.preventDefault();
         try {
-            const res = await fetch('/api/auth/signup', {
+            const res = await fetch(`${API_URL}/auth/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include', //send and save cookies for auth

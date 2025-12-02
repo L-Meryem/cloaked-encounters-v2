@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const passport = require("passport");
+const cors = require('cors');
 
 require("dotenv").config({ path: "./config/.env" });
 const PORT = process.env.PORT;
@@ -13,6 +14,7 @@ const StoreInDB = require("connect-mongo"); //not compatible with mongodb 7!
 
 //Middleware///////
 app.use(express.json());
+app.use(cors());
 
 app.use(
     session({

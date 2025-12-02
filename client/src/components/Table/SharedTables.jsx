@@ -4,6 +4,7 @@ import { useUser } from '../../context/UserContext';
 import AddIcon from '../../assets/add.png';
 import { saveNewTableToDb } from '../../utilities/fetches';
 import { useTable } from '../../context/TableContext';
+import { API_URL } from '../../utilities/config';
 
 
 const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
@@ -13,7 +14,7 @@ const SharedTables = ({ isShared, setIsShared, singleRoll }) => {
 
     useEffect(() => {
         const fetchSharedTables = async () => {
-            const res = await fetch('/api/tables/shared');
+            const res = await fetch(`${API_URL}/tables/shared`);
             const result = await res.json();
             setSharedTables(result.data);
         };

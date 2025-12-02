@@ -1,6 +1,8 @@
+import { API_URL } from "./config";
+
 const saveTableNameToDB = async (tableId, newName) => {
     try {
-        const saveToBb = await fetch(`/api/tables/${tableId}`, {
+        const saveToBb = await fetch(`${API_URL}/tables/${tableId}`, {
             method: "PUT",
             credentials: 'include',
             headers: {
@@ -18,7 +20,7 @@ const saveTableNameToDB = async (tableId, newName) => {
 
 const saveRowChangesToDb = async (table, row) => {
     try {
-        const saveToBb = await fetch(`/api/tables/${table._id}/rows/${row._id}`, {
+        const saveToBb = await fetch(`${API_URL}/tables/${table._id}/rows/${row._id}`, {
             method: "PUT",
             credentials: 'include',
             headers: {
@@ -37,7 +39,7 @@ const saveRowChangesToDb = async (table, row) => {
 
 const saveNewTableToDb = async table => {
     try {
-        const saveToBb = await fetch(`/api/tables`, {
+        const saveToBb = await fetch(`${API_URL}/tables`, {
             method: "POST",
             credentials: 'include',
             headers: {
@@ -62,12 +64,12 @@ const deleteTable = async tableId => {
     try {
 
         // Remove table from chains
-        await fetch(`/api/chains/delete-table/${tableId}`, {
+        await fetch(`${API_URL}/chains/delete-table/${tableId}`, {
             method: 'PUT',
             credentials: 'include'
         });
 
-        const res = await fetch(`/api/tables/${tableId}`, {
+        const res = await fetch(`${API_URL}/tables/${tableId}`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -79,7 +81,7 @@ const deleteTable = async tableId => {
 
 const toggleShareTable = async (tableId, shared) => {
     try {
-        const res = await fetch(`/api/tables/${tableId}`, {
+        const res = await fetch(`${API_URL}/tables/${tableId}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -136,7 +138,7 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
         let url = "/api/chains";
         //check if chain already exists
         if (chainId && chainId !== null) {
-            const check = await fetch(`/api/chains/${chainId}`, {
+            const check = await fetch(`${API_URL}/chains/${chainId}`, {
                 credentials: 'include'
             });
 
@@ -144,7 +146,7 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
 
             if (check.ok) {
                 method = "PUT";
-                url = `/api/chains/${chainId}`;
+                url = `${API_URL}/chains/${chainId}`;
             }
         }
 
@@ -174,7 +176,7 @@ const saveChain = async (chainName, nodes, edges, chainId = null) => {
 
 const deleteChain = async chainId => {
     try {
-        const res = await fetch(`/api/chains/${chainId}`, {
+        const res = await fetch(`${API_URL}/chains/${chainId}`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -186,7 +188,7 @@ const deleteChain = async chainId => {
 
 const saveSeed = async (seedName, rolls, chainId) => {
     try {
-        const saveToBb = await fetch(`/api/seeds`, {
+        const saveToBb = await fetch(`${API_URL}/seeds`, {
             method: "POST",
             credentials: 'include',
             headers: {
@@ -209,7 +211,7 @@ const saveSeed = async (seedName, rolls, chainId) => {
 
 const deleteSeed = async seedId => {
     try {
-        const res = await fetch(`/api/seeds/${seedId}`, {
+        const res = await fetch(`${API_URL}/seeds/${seedId}`, {
             method: 'DELETE',
             credentials: 'include'
         });

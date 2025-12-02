@@ -1,5 +1,6 @@
 import React from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { API_URL } from '../utilities/config';
 
 const SeedContext = createContext();
 
@@ -9,7 +10,7 @@ const SeedProvider = ({ children }) => {
 
     const fetchSeed = async () => {
         try {
-            const res = await fetch('/api/seeds');
+            const res = await fetch(`${API_URL}/seeds`);
             const result = await res.json();
             if (result) {
                 setLoading(true);

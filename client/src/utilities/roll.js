@@ -1,3 +1,5 @@
+import { API_URL } from "./config";
+
 const getTableRange = (dieType) => {
 
     const dieParts = dieType.split('d');
@@ -56,7 +58,7 @@ const rollTable = table => {
 const rollChain = async (tableIds) => {
 
     const fetchPromises = tableIds.map(tableId =>
-        fetch(`/api/tables/${tableId}`).then(res => res.json())
+        fetch(`${API_URL}/tables/${tableId}`).then(res => res.json())
     );
 
     const tableResults = await Promise.all(fetchPromises);

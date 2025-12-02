@@ -1,6 +1,7 @@
 import { useEdges } from '@xyflow/react';
 import React, { Children } from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { API_URL } from '../utilities/config';
 
 //Hold user data
 const UserContext = createContext();
@@ -13,7 +14,7 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await fetch('/api/auth/me', { credentials: 'include' });
+                const res = await fetch(`${API_URL}/auth/me`, { credentials: 'include' });
                 const data = await res.json();
 
                 if (data.success) {
