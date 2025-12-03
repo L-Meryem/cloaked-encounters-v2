@@ -4,13 +4,14 @@
 
 ## About
 
-Tabletop RPGs like Dungeons & Dragons are about sharing a collective story.  Part of making that story come alive is having locations, events and characters that feel both fun and authentic to the game.  Most gamemasters will use random tables as prompts to build their adventures.  Such a table might contain a list of twenty items you might find in a goblin’s pocket, fifty horrific diseases, or one hundred personality quirks.
+Tabletop RPGs like Dungeons & Dragons are about sharing a collective story. Part of making that story come alive is having locations, events and characters that feel both fun and authentic to the game.  Most gamemasters will use random tables as prompts to build their adventures. Such a table might contain a list of twenty items you might find in a goblin’s pocket, fifty horrific diseases, or one hundred personality quirks.
 
-Not every table will work for every game.  Just as a random character from Game of Thrones would seem out of place in a Harry Potter story, not every table will match every game setting.  Lists must be gathered and curated so that they produce results that are random but still feel natural to the game.
+![A die 4 pointing at the 4th entry of the treasure chest table](image-1.png)
+
+Not every table will work for every game. Just as a random character from Game of Thrones would seem out of place in a Harry Potter story, not every table will match every game setting. Lists must be gathered and curated so that they produce results that are random but still feel natural to the game.
 
 Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. Cloaked Encounters is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
 
-<!-- In the future, I hope to add features that will allow my community to share their favorites with each other. -->
 
 <p align="center">
   <a href="#" target="_blank">
@@ -19,26 +20,30 @@ Using random tables is nothing new. There are countless collections of amazing l
   <sub><em>Wireframe</em></sub>
 </p>
 
-<!-- ## What is Cloaked Encounters?
-
-![A die 4 pointing at the 4th entry of the treasure chest table](image-3.png)
-
 ## Stranger in a tavern
-<blockquote>"Your attention is caught by the
-sound of raucous laughter. A
-young man in muddy armor and
-a crossbow slung across his
-back has drawn a small crowd
-of listeners."</blockquote>
 
-![chain roll on tables to generate our tavern npc](image-2.png) -->
+The party is on a dangerous mission and wants to hire some extra help. They decide to head to a local tavern to recruit. That’s a great idea, but… uh oh, the DM doesn’t have anything prepared. He pulls out **Cloaked Encounters** and chains together four tables: Name, Background, Personality and Weapon. 
+
+![chain roll on tables to generate our tavern npc](image.png)
+
+The results have sparked the DM’s imagination!</br>
+
+DM:
+  <blockquote>Your attention is drawn by the sound of raucous laughter. A young man in muddy armor and a crossbow slung across his back has drawn a small crowd of listeners.</blockquote>
+Players: 
+  <blockquote>We approach the stranger to listen to what he’s saying.</blockquote>
+DM: 
+  <blockquote>The stranger spots as you move in, and grins, clearly enjoying the attention. “Well, let me tell you, I may have lost my boots, but those goblins will think twice before messing with Stilton the Scout again!”
+Turning to the PCs, “Say strangers, I don’t think I’ve seen you around here before.”</blockquote>
+
 
 ## Features
 
-- Chain results from multiple tables and save them as a **chain** to re-roll later in your games.  
-- Keep a list of chains ready to roll on the spot during your sessions.  
-- Import tables from various sources such as PDFs, blogs and posts.  
-- Share your tables with the community in just one click.
+- Create or copy tables from sources like PDFs, blogs and posts
+- Connect multiple tables into a chain and roll them together
+- Save those chains for later use during your sessions
+- Save your favorite results as seeds for later use
+- Share your tables with the community in just one click
 
 ## Roadmap
 - [X] Copy tables from blogs and posts
