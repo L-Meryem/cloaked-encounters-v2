@@ -77,7 +77,7 @@ nav {
 #board {
   flex: 4;
   height: 80%;
-  min-height: 70%;
+  min-height: 65%;
   padding: 0 .2rem 0 .2rem;
 }
 
@@ -89,7 +89,7 @@ nav {
   flex: 1;
   background-color: var(--dark-grey-bg);
   color: var(--main-color);
-  min-height: 30%;
+  min-height: 34%;
   position: relative;
   display: flex;
   flex-direction: row-reverse;
