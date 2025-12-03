@@ -40,7 +40,7 @@ const Viewer = ({ currentChain, chainName, setChainName, onSaveChain, onSaveNewC
 
       for (const tableIndex of reRolls) {
         const tableId = currentChain.tables[tableIndex];
-        const res = await fetch(`${API_URL}/tables/${tableId}`);
+        const res = await fetch(`${API_URL}/tables/${tableId}`, {credentials: 'include'});
         const result = await res.json();
 
         if (result.success) {

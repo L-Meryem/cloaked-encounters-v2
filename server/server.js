@@ -37,7 +37,6 @@ app.use(
             sameSite: 'none',
             httpOnly: true,
             maxAge: 3600000 * 24, // 24h
-            domain: '.cloaked-encounters.onrender.com'
         }
     })
 );
