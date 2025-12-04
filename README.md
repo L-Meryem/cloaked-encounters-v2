@@ -10,8 +10,13 @@ Tabletop RPGs like Dungeons & Dragons are about sharing a collective story. Part
 
 Not every table will work for every game. Just as a random character from Game of Thrones would seem out of place in a Harry Potter story, not every table will match every game setting. Lists must be gathered and curated so that they produce results that are random but still feel natural to the game.
 
-Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. [Cloaked encounters](https://cloaked-encounters.onrender.com/) is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
-
+Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. [Cloaked Encounters](https://cloaked-encounters.onrender.com/) is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
+</br></br>
+<p align="center">
+  <a href="https://cloaked-encounters.onrender.com/" target="_blank">
+    <img width="1000" alt="screen shot of cloaked encounters" src="https://github.com/user-attachments/assets/1870a2fb-0d45-4864-bdc0-11923c10e551" />
+  </a>
+</p>
 
 <!-- <p align="center">
   <a href="#" target="_blank">
@@ -22,7 +27,7 @@ Using random tables is nothing new. There are countless collections of amazing l
 
 ## Stranger in a tavern
 
-The party is on a dangerous mission and wants to hire some extra help. They decide to head to a local tavern to recruit. That’s a great idea, but… uh oh, the DM doesn’t have anything prepared. He pulls out [Cloaked encounters](https://cloaked-encounters.onrender.com/) and chains together four tables: Name, Background, Personality and Weapon. 
+The party is on a dangerous mission and wants to hire some extra help. They decide to head to a local tavern to recruit. That’s a great idea, but… uh oh, the DM doesn’t have anything prepared. He pulls out [Cloaked Encounters](https://cloaked-encounters.onrender.com/) and chains together four tables: Name, Background, Personality and Weapon. 
 
 The results have sparked the DM’s imagination!</br>
 
