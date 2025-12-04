@@ -4,7 +4,7 @@ const pastedTableText = text => {
         .filter(l => l.length);
 
     const table = lines.flatMap(line => (line.match(/\d+\s+[^\d]+/g) || []))
-    map((line, index) => {
+    .map((line, index) => {
         const entryText = line.replace(/^\d+\s*[\.\)\-]?\s*/, '');
 
         return {
