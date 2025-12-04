@@ -1,39 +1,38 @@
 <a id="top"></a>
 
-![status](https://img.shields.io/badge/status-early%20development-%23eb426c?style=for-the-badge)
+![status](https://img.shields.io/badge/status-In%20active%20development-%23eb426c?style=for-the-badge)
 
 ## About
 
+<img align="left" width="350" alt="chain roll on tables to generate our tavern npc" src="https://github.com/user-attachments/assets/90b6735a-7fa2-499c-bb04-c6a085b63aa2" />
+  
 Tabletop RPGs like Dungeons & Dragons are about sharing a collective story. Part of making that story come alive is having locations, events and characters that feel both fun and authentic to the game.  Most gamemasters will use random tables as prompts to build their adventures. Such a table might contain a list of twenty items you might find in a goblin’s pocket, fifty horrific diseases, or one hundred personality quirks.
-
-![A die 4 pointing at the 4th entry of the treasure chest table](image-1.png)
 
 Not every table will work for every game. Just as a random character from Game of Thrones would seem out of place in a Harry Potter story, not every table will match every game setting. Lists must be gathered and curated so that they produce results that are random but still feel natural to the game.
 
-Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. Cloaked Encounters is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
+Using random tables is nothing new. There are countless collections of amazing lists spread through books, blogs and social media. [Cloaked encounters](https://cloaked-encounters.onrender.com/) is designed to let gamemasters collect, edit and quickly access their favorite lists at the press of a button.
 
 
-<p align="center">
+<!-- <p align="center">
   <a href="#" target="_blank">
   <img width="800"  alt="mockup" src="https://github.com/user-attachments/assets/8eed40c7-ee39-4717-96e8-8c1c2ddaeb62" />
 </a><br>
   <sub><em>Wireframe</em></sub>
-</p>
+</p> -->
 
 ## Stranger in a tavern
 
-The party is on a dangerous mission and wants to hire some extra help. They decide to head to a local tavern to recruit. That’s a great idea, but… uh oh, the DM doesn’t have anything prepared. He pulls out **Cloaked Encounters** and chains together four tables: Name, Background, Personality and Weapon. 
-
-![chain roll on tables to generate our tavern npc](image.png)
+The party is on a dangerous mission and wants to hire some extra help. They decide to head to a local tavern to recruit. That’s a great idea, but… uh oh, the DM doesn’t have anything prepared. He pulls out [Cloaked encounters](https://cloaked-encounters.onrender.com/) and chains together four tables: Name, Background, Personality and Weapon. 
 
 The results have sparked the DM’s imagination!</br>
 
-DM:
-  <blockquote>Your attention is drawn by the sound of raucous laughter. A young man in muddy armor and a crossbow slung across his back has drawn a small crowd of listeners.</blockquote>
-Players: 
-  <blockquote>We approach the stranger to listen to what he’s saying.</blockquote>
+<img align="right" width="450" alt="chain roll on tables to generate our tavern npc" src="https://github.com/user-attachments/assets/9a0ca52b-49df-45eb-b245-7154b53147f3" />
 DM: 
-  <blockquote>The stranger spots as you move in, and grins, clearly enjoying the attention. “Well, let me tell you, I may have lost my boots, but those goblins will think twice before messing with Stilton the Scout again!”
+<blockquote>Your attention is drawn by the sound of raucous laughter. A young man in muddy armor and a crossbow slung across his back has drawn a small crowd of listeners.</blockquote>
+Players: 
+<blockquote>We approach the stranger to listen to what he’s saying.</blockquote>
+DM: 
+<blockquote>The stranger spots as you move in, and grins, clearly enjoying the attention. “Well, let me tell you, I may have lost my boots, but those goblins will think twice before messing with Stilton the Scout again!”
 Turning to the PCs, “Say strangers, I don’t think I’ve seen you around here before.”</blockquote>
 
 
@@ -78,9 +77,10 @@ Turning to the PCs, “Say strangers, I don’t think I’ve seen you around her
 
 ## Acknowledgments
 
-- [The open source guides](https://opensource.guide/)
-- [Character doodles](https://gordyh.itch.io/public-domain-character-doodles) by Gordy Higgins.
+- [Character doodles](https://gordyh.itch.io/public-domain-character-doodles) by Gordy Higgins
 - [Game-icons.net](https://game-icons.net/)
+- [The open source guides](https://opensource.guide/)
+
 
 <p align="right">
   <a href="#top">
